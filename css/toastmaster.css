@@ -1,0 +1,144 @@
+#toastmaster{   
+    height:100%;
+    width: 100%;
+    padding-left:5%;
+    padding-right: 5%;
+    padding-bottom: 2vh;
+    padding-top:90px; 
+}
+
+#toastmaster>*{
+    position: relative;
+    display: block;  
+}
+
+#toastmaster> h1{
+    text-align: center;
+}
+
+#toastmaster-table{
+    width: 100%;
+    display: table !important;
+    border-spacing: 15px;
+    table-layout: fixed;
+}
+
+.toastmaster-info{   
+    padding:5%;
+    padding-top:1%;
+    margin-top:2%;
+    background-color: khaki;
+    display: table-cell !important;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    
+} 
+
+.toastmaster-info>*{
+    margin: 2%;
+}
+
+.toastmaster-img{
+    position: relative;
+    margin-left:25%;
+    padding-bottom: 50%;
+    width: 50%;
+    margin-bottom: 0;
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    /* border: 1px solid rgba(0,0,0,0.1); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    background-image: url(../background-images/DSC01133.jpg);
+}
+
+.toastmaster-name{
+    margin-top: 2%;
+}
+#toastmaster-contact-button{
+    position: relative;
+    padding-left: 3em;
+    padding-right: 3em;
+    height: 4em;
+    border-radius: 2em;
+    border: none;
+    left: 50%;
+ 
+    transform: translate(-50%);
+    display: block;
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    background-color: khaki;
+    transition: 0.2s ease;
+    transform-origin: left;   
+}
+#toastmaster-contact-button:hover{
+    transform: scale(1.1) translate(-50%);
+}
+#toastmaster-contact-form{
+    background-color: lavenderblush;
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    left:50%;
+    transform: translateX(-50%);
+    top: 100px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 2%;
+    display: none !important;
+    position: absolute;
+    margin-bottom: 2%;
+    z-index: 5; 
+    
+}
+#overlay{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    left:0;
+    top:0;
+    height: inherit;
+    width:100%;
+    z-index: -1
+}
+
+@media only screen and (max-width: 1279px) {
+    #toastmaster-contact-form{
+        top:50px;
+    }
+}
+@media only screen and (max-width: 800px) {
+    #toastmaster-contact-form{
+        width: 70%;
+        
+    }
+}
+@media only screen and (max-width: 600px) {
+    .toastmaster-info{
+        display: flex !important;
+        align-items: center;
+        align-content: center;
+        margin-top: 2em;
+    }
+    .toastmaster-info>*{
+        display: block;
+    }
+    
+    .toastmaster-img{
+        position: relative;
+        height: 0;
+        flex: 0 0 30%;
+        padding-bottom: 30%;
+        margin-left: 0;
+    }
+  
+}
+@media only screen and (max-width: 350px) {
+    
+}

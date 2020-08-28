@@ -1,0 +1,24 @@
+.map{
+    display: table-row;
+    height: auto;
+}
+.map-info{ 
+    display: table-row;
+    height: 20vh;
+    text-align: center;
+    white-space: normal;
+    margin:0;
+    padding:0;
+} 
+#ceremony{
+
+    left:0;
+}
+#dinner{
+    right:0;
+}
+.map-container{
+    display: table;
+    background-color: rgb(66, 66, 66);
+    color: whitesmoke;
+}

@@ -1,0 +1,37 @@
+#giftlist input[type="number"], 
+#giftlist input[type="number"]:focus,
+#giftlist input[type="number"]:valid{
+    
+    background-color:rgb(238, 238, 238);
+}
+input::-webkit-inner-spin-button {
+    opacity: 1;
+}
+#popup{
+    display: none;
+    position: absolute;
+    height:auto;
+    left:50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background-color: khaki;
+    z-index: 10;
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    border: 1px solid rgba(0,0,0,0.1);
+    padding: 2%;
+}
+#giftlistContainer{
+    width:100%;
+}
+#giftlist td{
+    width:15%;
+}
+#giftlist th{
+    text-align:left;
+}
+.giftName{
+    width: 30%;
+    cursor: pointer;
+}

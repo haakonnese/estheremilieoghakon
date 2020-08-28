@@ -1,0 +1,241 @@
+#nav {
+    position: fixed;
+    z-index: 2;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;  
+}
+li{
+    float: left;
+}
+a{
+    display: block;
+    text-decoration: none;
+    color: whitesmoke;
+    size: 10%;
+    padding: 30px;
+    font-size: larger;
+    cursor: pointer;
+}
+i{
+    cursor: pointer;
+}
+.info:hover{
+    background-color:black;
+    opacity: 50%;
+}
+.info:active{
+    background-color: black;
+    opacity: 100%;
+}
+#ham {
+    display: none;
+}
+/* #home{
+    left: 50%;
+    position: fixed;
+    transform: translate(-50%, 0);
+} */
+
+.page{
+    left: 0;
+    width: 100%;
+    position: fixed;
+    min-height: 100%;
+    top:100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    background-size: cover;
+    background-position-y: top;
+    background-position-x: right;
+    margin: 0;
+    padding: 0;
+    
+    overflow: auto;
+}
+.pageimg{
+    position: fixed;
+    display: table-cell;
+    width:50%;
+    z-index: 0;
+    min-height: 100%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    /* max-width: 100%; */
+    background-size: cover;
+    background-position-y: top;
+}
+#page1{
+    background-image: url(../background-images/DSC01932-compressed.JPG);
+    top:0;
+}
+#page2img{
+    right:0;
+    background-image: url(../background-images/DSC01566.jpg);
+    background-position-x: right;
+}
+#page3img{
+    background-image: url(../background-images/DSC01645.jpg);
+    background-position-x: center;    
+    background-position-y: center;
+}
+#page4img{
+    right: 0;
+    background-image: url(../background-images/DSC01133.jpg);
+    background-position-x: center;
+    background-position-y: top;
+    
+}
+
+
+#marry{
+    color: whitesmoke;
+    text-align: center;
+    margin-top: 100px;
+    font-size: larger;
+    z-index: 2;  
+}
+
+.closed{
+    width: 100%;
+    background-color: transparent;
+    transition: 1s;
+}
+.scrolled.closed{
+    background-color: black;
+    transition: 1s;
+}
+.hamClass{
+    transition: 1s;
+}
+.scrolled .hamClass{
+    background-color: black;
+    transition: 1s;
+}
+#form{
+    position: relative;
+    top:20%;
+    display: table-row;
+    left:0;  
+} 
+
+@media only screen and (max-width: 1279px) {
+    li a{
+        display: none;
+    }
+    #nav li{
+        float:none; 
+        text-align: center;
+        
+    }
+    #nav ul{
+        position: relative;
+        margin-top:10%;
+    }
+ 
+    #nav .info{
+        display: inline-block;
+        padding: 5%;
+        color: black;
+        text-align: center;   
+    }
+    
+    #nav {
+        overflow-y: scroll;
+        height: 100%;
+        background-color: whitesmoke;
+        opacity: 100%;
+        
+        position: fixed;
+        z-index: 2;
+    }
+    .closed{
+        right: -100%;
+        transition: 1s ease;
+    }
+    .opened{
+        width: 50%;
+        box-shadow: -6px 0px 6px 0px rgba(0,0,0,0.62);
+        right:0;
+        transition: 1s ease;
+    }
+    .opened .hamClass{
+        background-color: whitesmoke;
+        color: black;
+        opacity: 100%;
+    }
+    #ham{
+        position: fixed;
+        display: block;
+        right: 0;
+        top: 0;
+        padding: 20px;
+    }
+    .material-icons{
+        font-size: 42px !important;
+    }
+   
+    #marry{
+        margin-top: 20px;
+        font-size: medium;
+    }
+    h1,h2{
+        margin: 5px;
+        padding: 5px;
+    }
+
+ 
+}
+@media only screen and (max-width: 800px) {
+   
+    #marry{
+        margin-top: 0px;
+        font-size: medium;
+    }
+    h1,h2{
+        margin: 5px;
+        padding: 5px;
+    }
+
+    .opened{
+        width: 80%;
+    }
+    .material-icons{
+        font-size: 36px !important;
+    }
+    #ham {
+        padding:15px;
+    }
+
+ 
+}
+@media only screen and (max-width: 500px) {
+    
+    #marry{
+    
+        font-size: smaller;
+    }
+    h1,h2{
+        margin: 0px;
+        padding: 0px;
+    }
+    .opened {
+        width: 100%;
+    }
+    .material-icons{
+        font-size: 24px !important;
+    }
+    #ham{
+        padding: 10px;
+    }
+
+}
+@media only screen and (max-width: 350px) {
+    #marry {
+        font-size: x-small;
+    }
+}

@@ -1,0 +1,90 @@
+
+
+.radioButton{
+    display: block;
+}
+form input[type="text"], 
+form input[type="number"],
+form input[type="email"],
+form textarea,
+form input[type="submit"]{
+    padding: .3em 2%;
+    margin-bottom: 2em;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: none;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #999;
+    font-size: larger;
+    
+}
+form input[type="text"], 
+form input[type="number"],
+form input[type="email"],
+form textarea{
+    background-color: inherit;
+}
+
+form input[type="submit"]{
+    border: 1px solid rgba(0,0,0,0.1) !important;
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+form input[type="submit"]:hover{
+    background-color:rgb(230, 230, 230);
+    transform: scale(1.01);
+}
+form input[type="submit"]:active{
+    -webkit-box-shadow: 0 5px 10px 5px rgba(0,0,0,0.2) !important;
+    -moz-box-shadow: 0 5px 10px 5px rgba(0,0,0,0.2) !important;
+    box-shadow: 0 5px 10px 5px rgba(0,0,0,0.2) !important;
+}
+.container form div{
+    position: relative;
+}
+.container form div .infoLabel{
+    position: absolute;
+    top: .5em;
+    pointer-events: none;
+    left: 2%;
+    font-size: larger;
+    color: #999;
+    transition: 0.5s ease;
+}
+form input:focus ~ .infoLabel,
+form input:valid ~ .infoLabel,
+form textarea:focus ~ .infoLabel,
+form textarea:valid ~ .infoLabel
+{
+    top: -.7em;
+    left: 1%;
+    font-size: medium;
+    font-weight: bold;
+    color: black;
+}
+form input[type="text"]:focus,
+form input[type="text"]:valid,
+form input[type="number"]:focus,
+form input[type="email"]:focus,
+form textarea:focus, 
+form input[type="number"]:valid,
+form input[type="email"]:valid,
+form textarea:valid{
+    border-bottom: 2px solid black;
+}
+.container .radioDiv{
+    margin-bottom: 1em;
+    font-size: larger;
+}
+.container .radioDiv .radioLabel{
+    margin-left: 0.2em;
+}
+
+@media only screen and (max-width: 1279px) {
+
+}
+

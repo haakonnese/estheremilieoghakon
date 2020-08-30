@@ -208,6 +208,9 @@
     const navEl = document.getElementById("nav");
     const pagesEl = document.querySelectorAll(".page");
     var WINDOWHEIGHT = window.innerHeight;
+    var topp = false;
+    var bottom = false;
+    var scrolledTimeOut;
     $("#showZeroRemaining").on("change", giftList);
     $("#sortGiftList").on("change",updateSort);
     function updateSort(){
@@ -258,8 +261,8 @@
             overlayEl.style.background = "rgba(0,0,0,0.6)";
             overlayEl.style.setProperty('z-index', 3);
             overlayEl.addEventListener("click", setContactFormFalse, false);
-            
             setOverlayHeight(toastmasterFormEl.clientHeight+100);
+            page5.scrollTop = 0;
             
         }
         else{
@@ -392,11 +395,10 @@
     function checkScroll(){
         
         var e = document.getElementById("page"+ page.toString());
-       
         if ((e.scrollHeight - e.scrollTop != e.clientHeight)&&deltaYvar<0){
             scrolled = true;
             
-            setTimeout(() => {
+            scrolledTimeOut =setTimeout(() => {
                 scrolled=false;
                
             }, 500);
@@ -405,7 +407,7 @@
             
         else if (e.scrollTop!=0&&deltaYvar>0){
             scrolled = true;
-            setTimeout(() => {
+            scrolledTimeOut = setTimeout(() => {
                 scrolled=false;
                 
             }, 500);
@@ -417,7 +419,21 @@
         
         
     }
+
+    function topBottom(){
+        var e = document.getElementById("page"+ page.toString());
+        
+        if (e.scrollHeight - e.scrollTop == e.clientHeight)
+            bottom = true;
+        else 
+            bottom = false;
+        if (e.scrollTop==0)
+            topp = true;
+        else 
+            topp = false;
+    }
     function scroll(){
+       
         var scrollDiv = checkScroll();
         
         if (!scrolled && !ctrl && !shift &&navEl.classList.contains("closed")&&scrollDiv){
@@ -430,8 +446,14 @@
                 if(page>=2)
                     page--;
             }
-            scrollElement();
+            scrolled = true;
+            scrolledTimeOut = setTimeout(() => {
+                scrolled=false;
+            }, 1000);
+            
         }
+       
+        scrollElement();
     }
 
     function scrollElement(){
@@ -449,33 +471,32 @@
         }
         var pageEl = document.getElementById("page"+page.toString());
         pageEl.style.height = "100%";
-        scrolled = true;
+        
         var navEl = document.getElementById("nav");
         if(page==1){
             navEl.classList.remove("scrolled");
         }
         else
             navEl.classList.add("scrolled");
-        setTimeout(() => {
-            scrolled=false;
-        }, 1000);
     }
     function touchStart(e){
         positionY = e.touches[0].clientY;
-        
-        scrollDiv = checkScroll();
-       
-
+        topBottom();
     }
     function touchMove(e){
-        if(!scrolled&&scrollDiv&&navEl.classList.contains("closed")){
+        
+        if(!scrolled&&navEl.classList.contains("closed")){
             deltaYvar = e.changedTouches[0].clientY -positionY;
             var percentage = deltaYvar/WINDOWHEIGHT;
-            for (var i = 0; i < pagesEl.length; i++){
-                //ikke på topp eller bunn og prøve å scrolle opp eller ned
-                if(!((page==1&&percentage>0)||(page==pagesEl.length&&percentage<0))){
-                    pagesEl[i].style.transition = "none";
-                    pagesEl[i].style.top = ((i+1)-page+percentage)*100+"%";
+            if(deltaYvar<0&&bottom||deltaYvar>0&&topp){
+                
+                
+                for (var i = 0; i < pagesEl.length; i++){
+                    //ikke på topp eller bunn og prøve å scrolle opp eller ned
+                    if(!((page==1&&percentage>0)||(page==pagesEl.length&&percentage<0))){
+                        pagesEl[i].style.transition = "none";
+                        pagesEl[i].style.top = ((i+1)-page+percentage)*100+"%";
+                    }
                 }
             }
         }
@@ -483,8 +504,9 @@
 
     function touchEnd(e){
         deltaYvar = e.changedTouches[0].clientY -positionY;
-        if(scrollDiv)
+        if(deltaYvar<0&&bottom||deltaYvar>0&&topp)
             scroll();
+        else scrollElement();
        
     }
     
@@ -510,11 +532,16 @@
         
     }
     function setOverlayHeight(height){
-        var toastmasterEl = document.getElementById("toastmaster")
-        if(height>window.innerHeight)
+        var toastmasterEl = document.getElementById("toastmaster");
+        var overlayEl = document.getElementById("overlay");
+        if(height>window.innerHeight){
             toastmasterEl.style.height= height+"px";
-        else
+            overlayEl.style.height= height+"px";
+        }
+        else{
             toastmasterEl.style.height = "100%";
+            overlayEl.style.height = "100%";
+        }
         
     }
 </script>

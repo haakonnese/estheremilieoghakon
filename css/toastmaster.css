@@ -53,7 +53,12 @@
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 50%;
-    background-image: url(../background-images/DSC01133.jpg);
+}
+#toastmasterfemale{
+    background-image: url(../background-images/kristin.jpg);
+}
+#toastmastermale{
+    background-image: url(../background-images/torleiv-f-2020.png);
 }
 
 .toastmaster-name{

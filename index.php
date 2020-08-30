@@ -74,7 +74,8 @@
         
            
             <div class="container-info" id="form">
-            <h1>Registrer om du/dere kommer eller ikke</h1>
+            <h1>Registrer om du kommer eller ikke</h1>
+            <h3>Er dere flere, registrer individuelt for hver person</h3>
             <form id="contact-form" onsubmit="return sendRSVP()" method="post"> 
             <div>
                 <input type="text" name="name" required>
@@ -87,11 +88,11 @@
             <div>
                 <div class="radioDiv">
                     <input id="can" type="radio" name="rsvp" value="Kan komme" required class="radio-button">
-                    <label for="can" class="radioLabel">Jeg/Vi kan komme</label>
+                    <label for="can" class="radioLabel">Jeg kan komme</label>
                 </div>
                 <div class="radioDiv">                    
                     <input id="cannot" type="radio" name="rsvp" value="Kan IKKE komme" required class="radio-button">
-                    <label for="cannot" class="radioLabel">Jeg/Vi kan <b>IKKE</b> komme</label>
+                    <label for="cannot" class="radioLabel">Jeg kan <b>IKKE</b> komme</label>
                 </div>
             </div>
            
@@ -103,6 +104,7 @@
             
             <div class="container-info" id="submitted-form" style="display:none">
                 <h1>Takk for svaret</h1>
+                <button onclick="sendNew()">Registrer en person til</button>
             </div>
             <div class="container-info" id="unsubmitted-form" style="display:none">
                 <h1>Det skjedde en feil. Venligst kontakt 48075305 for å si i fra at du kommer.</h1>
@@ -298,7 +300,11 @@
         });
         return false;
     }
-   
+    function sendNew(){
+        document.getElementById("contact-form").reset();
+        document.getElementById("form").style.display = "block";
+        document.getElementById("submitted-form").style.display = "none";
+    }
     function kjop(id){
         var number = document.getElementById("number"+id);
         var popupEl = document.getElementById("popup");

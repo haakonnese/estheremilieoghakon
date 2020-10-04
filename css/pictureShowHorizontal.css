@@ -44,8 +44,7 @@
 	height: 100vh;
 	background-color: black;
 	width: 100vw;
-	display: none;
-	
+	display: none;	
 }
 #slideshow>img{
 	position: absolute;
@@ -64,6 +63,29 @@
 	font-size: 36px !important;
 	z-index: 6;
 }
+#slideshow #slideshowControl{
+	position: relative;
+	color: white;
+	background-color: black;
+	opacity: 50%;
+	padding-left: 2em;
+	padding-right:2em;
+	border-radius: 4px;
+}
+#slideFlex{
+	position: fixed;
+	bottom: 10vh;
+	z-index: 6;
+	width:100%;
+	justify-content: center;
+	display: flex
+}
+#slideshow #slideshowControl>i{
+	position: relative;
+	display: inline-block !important;
+	color: white;
+	font-size: 72px !important;
+}
 
 .activeImg{
 	display: block !important;
@@ -72,5 +94,12 @@
 @media only screen and (max-width: 1279px){
     #picture{
         top:0;
-    }
+	}
+	
+}
+@media only screen and (max-width: 350px){
+	#slideshow #slideshowControl>i{
+		font-size: 48px !important;
+	}
+	
 }

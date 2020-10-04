@@ -104,7 +104,8 @@
             
             <div class="container-info" id="submitted-form" style="display:none">
                 <h1>Takk for svaret</h1>
-                <button onclick="sendNew()">Registrer en person til</button>
+                <br>
+                <button id="sendNew" onclick="sendNew()">Registrer en person til</button>
             </div>
             <div class="container-info" id="unsubmitted-form" style="display:none">
                 <h1>Det skjedde en feil. Venligst kontakt 48075305 for å si i fra at du kommer.</h1>
@@ -120,16 +121,16 @@
                 <div class="toastmaster-info" id="toastmaster-left">
                     <div class="toastmaster-img" id="toastmastermale"></div>
                     <div class="toastmaster-name">
-                        <p>Navn: Torleiv Fjalestad<br>
-                        Kjenner brudeparet fra: Soltun og Trondheim. Bor med Håkon.
+                        <p><b>Navn:</b> Torleiv Fjalestad<br>
+                        <b>Kjenner brudeparet fra:</b> Soltun og Trondheim. Bor med Håkon.
                         </p>
                     </div>
                 </div>
                 <div class="toastmaster-info" id="toastmaster-right">
                     <div class="toastmaster-img" id="toastmasterfemale"></div>
                     <div class="toastmaster-name">
-                        <p>Navn: Kristin Ramsli Søyland<br>
-                        Kjenner brudeparet fra: Fjellheim/NN-team og Trondheim. Bor med Esther-Emilie.
+                        <p><b>Navn:</b> Kristin Ramsli Søyland<br>
+                        <b>Kjenner brudeparet fra:</b> Fjellheim/NN-team og Trondheim. Bor med Esther-Emilie.
                         </p>
                     </div>
                 </div>
@@ -189,7 +190,7 @@
                 <option value="gjenstaende DESC">Gjenstående synkende</option>
                 <option value="price ASC">Pris stigende</option>
                 <option value="price DESC">Pris synkende</option>
-                <option value="store DESC">Butikk</option>
+                <option value="store ASC">Butikk</option>
             </select>
             <div id="giftlist"></div>
         </div>
@@ -211,6 +212,9 @@
     var topp = false;
     var bottom = false;
     var scrolledTimeOut;
+    
+    
+  
     $("#showZeroRemaining").on("change", giftList);
     $("#sortGiftList").on("change",updateSort);
     function updateSort(){
@@ -220,7 +224,6 @@
     function setTop(){
         setColor();
         giftList();
-        
         for (var i = 0; i < pagesEl.length; i++){
             pagesEl[i].style.top = (i-page+1)*100+"%";
             pagesEl[i].style.transition = "1s ease";
@@ -231,6 +234,7 @@
                 window.open(row.dataset.href);
             });
         });
+        
         checkURL();
     }
 
@@ -238,7 +242,7 @@
         var infoEl = document.querySelectorAll(".info");
         for (var i = 0; i < infoEl.length; i++){
             if(page-1==i){
-                infoEl[i].style.color = "khaki";
+                infoEl[i].style.color = "rgb(248, 227, 42";
             }
             else if(window.innerWidth>1279)
                 infoEl[i].style.color = "white";

@@ -2,7 +2,7 @@
 <html lang="no">
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"> 
-    <title>EE&H 26.06.2021</title>
+    <title>EE&#38;H 26.06.2021</title>
     <script src="jquery-3.5.1.min.js"></script>
     
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
@@ -14,12 +14,12 @@
     <link rel="stylesheet" type="text/css" href="css/pictureShowHorizontal.css">
     <script src="js/exif.js"></script>
 </head>
-
+<!-- onload="exifRotate()" -->
 <!-- <body onload="calcHeight()"> -->
-    <body onload="exifRotate()" >
+    <body  >
     <div id="nav" class="closed scrolled">
         <ul>
-            <li><a class="info" onclick="scrollToPage(1)" >EE&H</a></li>
+            <li><a class="info" onclick="scrollToPage(1)" >EE&#38;H</a></li>
             <li><a class="info" onclick="scrollToPage(2)">Vielse</a></li>
             <li><a class="info" onclick="scrollToPage(3)">Fest</a></li>
             <li><a class="info" onclick="scrollToPage(4)">Registrer</a></li>
@@ -46,17 +46,15 @@
         if(!$conn)
             echo '0';
         else{
-            $query = $conn->query("SELECT * FROM images WHERE status = 1 ORDER BY uploaded_on DESC");
+            $query = $conn->query("SELECT * FROM images WHERE status = 1 ORDER BY id DESC");
             $number = 0;
             if($query->num_rows > 0){
                 while($row = $query->fetch_assoc()){
                     $number++;
                     $imageURL = 'images/'.$row["file_name"];      
             ?>  
-                <div class="item" id="item<?php echo $number; ?>">
-                <a onclick="showImage('<?php echo $imageURL; ?>', <?php echo $number?> )">
-                <img id="img<?php echo $number; ?>" src="<?php echo $imageURL; ?>" loading="lazy" alt="bilde"  />
-                </a>
+                <div class="item" id="itemimg<?php echo $number; ?>">
+                <img class="image" onclick="showImage(<?php echo $number?>)" id="img<?php echo $number; ?>" src="<?php echo $imageURL; ?>" loading="lazy" alt="bilde"  />
                 </div>
             <?php }
             } 
@@ -65,12 +63,27 @@
         ?>
     
     </div>
+    <div id="slideshow">
+        <i id="closeSlideshow" style="display:none;" class="material-icons">clear</i>
+        <div id="slideFlex" >
+            <div id="slideshowControl" style="display:none;">
+                <i id="previousPicture" class="material-icons">navigate_before</i>
+                <i id="pausePlay" class="material-icons">play_arrow</i>
+                <i id="nextPicture" class="material-icons">navigate_next</i>
+            </div>
+        </div>
+    </div>
+    
+        
+        
+    </div>
 <script src="js/functions.js"></script>
 
 <script>
     setInterval(()=>{
         checkForNewImages();
-    },60000);
+        
+    },20000);
     function checkForNewImages(){
         var numberOfPictures = document.querySelectorAll(".item").length;
         $.ajax({
@@ -78,10 +91,10 @@
             url: "fetch",
             data: "numberOfPictures="+numberOfPictures,
             success: function(data){
-                
                 if(data!=0){
                     document.getElementById("picture").innerHTML = data+document.getElementById("picture").innerHTML;
-                    exifRotate();
+                    addImageToSlideshow();
+                    
                 }
             },
             
@@ -91,10 +104,12 @@
         window.location = '/bryllup/#'+page;
     }
 
-    function showImage(url, number){
-        // console.log(number);
-    }
-    
+    document.getElementById("slideshow").addEventListener("click",close);
+    document.getElementById("slideshow").addEventListener("mousemove",showClose);
+    document.getElementById("closeSlideshow").addEventListener("click",close);
+    document.getElementById("previousPicture").addEventListener("click", prevImage);
+    document.getElementById("nextPicture").addEventListener("click", nextImage);
+    document.getElementById("pausePlay").addEventListener("click", pausePlay);
     function calcHeight(){
         var picturesEl = document.querySelectorAll(".item");
         var cols=1;
@@ -139,32 +154,145 @@
             break;
         }
     }
+    var closeTimeout;
+    document.getElementById("closeSlideshow").style.transition ="0.5s ease";
 
-
-    function exifRotate(){
-        var imgEl = document.querySelectorAll("img");
-        for(var i = 0; i< imgEl.length; i++){
-            EXIF.getData(imgEl[i], function() {
-                    //console.log(EXIF.getTag(this, "Orientation") || 1);
-                    var exifRotation = (EXIF.getTag(this, "Orientation") || 1);
-                    switch(exifRotation){
-                        case 8:
-                            document.getElementById(this.id).style.setProperty("rotate", "90deg");
-                            break;
-                        case 3:
-                            document.getElementById(this.id).style.setProperty("rotate", "180deg");
-                            break;
-                        case 6:
-                            document.getElementById(this.id).style.setProperty("rotate", "270deg");
-                            break;
-                    }
-                    if(exifRotation !=1){
-                        document.getElementById(this.id).style.setProperty("object-fit", "contain");
-                    }
-                    });
+    function showClose(){
+        clearTimeout(closeTimeout);
+        document.getElementById("closeSlideshow").style.display ="block";
+        document.getElementById("slideshowControl").style.display="block";
+        document.querySelector("body").style.cursor = "auto";
+        if($('#closeSlideshow:hover').length==0 && $('#slideshowControl:hover').length==0){
+            closeTimeout = setTimeout(()=>{
+                document.getElementById("closeSlideshow").style.display ="none";
+                document.getElementById("slideshowControl").style.display="none";
+                document.querySelector("body").style.cursor = "none";
+            },2000);
         }
+    }
+    function addImageToSlideshow(){
         
+        var imagesEl = document.querySelectorAll(".image");
+        console.log(imagesEl.length);
+        var imagesEl = document.querySelectorAll(".image");
+        var slideshowEl = document.getElementById("slideshow");
+        for (var i = 0; i< imagesEl.length; i++){
+            
+            if(document.getElementById("slideshowimg"+(i+1))==null){
+                
+                var clone = document.createElement("img");
+                clone.id = "slideshowimg"+(i+1);
+                clone.className ="slideshowimg";
+                clone.style.display ="none";
+                clone.src = document.getElementById("img"+(i+1)).src;
+                slideshowEl.appendChild(clone);
+            }
+            
+        }
+    }
+    function showImage(number){
         
+        var imagesEl = document.querySelectorAll(".image");
+        var slideshowEl = document.getElementById("slideshow");
+        slideshowEl.style.display ="block";
+        addImageToSlideshow();
+        for(var i = 0; i< imagesEl.length; i++){
+            document.getElementById("slideshowimg"+(i+1)).classList.remove("activeImg");
+        }
+        slideshowEl.style.setProperty("z-index",5);
+        
+        document.getElementById("slideshowimg"+number).classList.add("activeImg");
+        document.getElementById("picture").style.display = "none";
+        showClose();
+        
+    }
+    var slide;
+    function runSlideshow(){
+        
+        var slideshowImg = document.querySelectorAll(".slideshowimg");
+        var img = document.querySelector(".activeImg");
+        var idNum = parseInt(img.id.substr(12));
+        if(idNum!=slideshowImg.length){
+            
+            slide = setTimeout(()=>{
+                
+                var activeImage = document.getElementById("slideshowimg"+(++idNum));
+                activeImage.classList.add("activeImg");
+                img.classList.remove("activeImg");
+                runSlideshow();
+            },4500);
+        }
+        else{
+            
+            slide = setTimeout(()=>{
+                var activeImage = document.getElementById("slideshowimg"+1);
+                activeImage.classList.add("activeImg");
+                img.classList.remove("activeImg");
+                runSlideshow();
+            },4500);
+        }
+       
+        
+    }
+
+    function close(e){
+        if(e.target==this){
+            clearTimeout(slide);
+            clearTimeout(closeTimeout);
+            document.querySelector("body").style.cursor = "auto";
+            document.getElementById("picture").style.display ="flex";
+            document.getElementById("slideshow").style.display ="none";
+        }
+    }
+    function pausePlay(e){
+        var pausePlayEl = document.getElementById("pausePlay");
+        if (pausePlayEl.innerHTML == "pause"){
+            pausePlayEl.innerHTML ="play_arrow";
+            clearTimeout(slide);
+        } 
+        else{
+            pausePlayEl.innerHTML ="pause";
+            runSlideshow();
+        }
+    }
+    function prevImage(e){
+        var pausePlayEl = document.getElementById("pausePlay");
+        var activeImageEl = document.querySelector(".activeImg");
+        var idNum = parseInt(activeImageEl.id.substr(12));
+        if (idNum!=1){
+            var activeImage = document.getElementById("slideshowimg"+(--idNum));
+            activeImage.classList.add("activeImg");
+            activeImageEl.classList.remove("activeImg");
+        }
+        else{
+            var activeImage = document.getElementById("slideshowimg"+(document.querySelectorAll(".slideshowimg").length));
+            activeImage.classList.add("activeImg");
+            activeImageEl.classList.remove("activeImg");
+        }
+        if (pausePlayEl.innerHTML == "pause"){
+            clearTimeout(slide);
+            runSlideshow();
+        } 
+    }
+    function nextImage(e){
+        var pausePlayEl = document.getElementById("pausePlay");
+        var num = document.querySelectorAll(".slideshowimg").length;
+        var activeImageEl = document.querySelector(".activeImg");
+        var idNum = parseInt(activeImageEl.id.substr(12));
+        if (idNum!=num){
+            var activeImage = document.getElementById("slideshowimg"+(++idNum));
+            activeImage.classList.add("activeImg");
+            activeImageEl.classList.remove("activeImg");
+        }
+        else{
+            var activeImage = document.getElementById("slideshowimg"+1);
+            activeImage.classList.add("activeImg");
+            activeImageEl.classList.remove("activeImg");
+        }
+        if (pausePlayEl.innerHTML == "pause"){
+            clearTimeout(slide);
+            runSlideshow()
+        } 
     }
 </script>
 </body>

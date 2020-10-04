@@ -7,7 +7,8 @@ form input[type="text"],
 form input[type="number"],
 form input[type="email"],
 form textarea,
-form input[type="submit"]{
+form input[type="submit"],
+#sendNew{
     padding: .3em 2%;
     margin-bottom: 2em;
     width: 100%;
@@ -26,19 +27,23 @@ form textarea{
     background-color: inherit;
 }
 
-form input[type="submit"]{
+form input[type="submit"], #sendNew,.giftlistRegistrerButton{
     border: 1px solid rgba(0,0,0,0.1) !important;
     -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
     -moz-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
     box-shadow: 0 5px 10px rgba(0,0,0,0.2);
     cursor: pointer;
     transition: 0.2s ease;
+    height: 3.5em;
+    align-self: center;
+    background-color: rgba(0, 0, 0, 0.822);
+    color: whitesmoke;
 }
-form input[type="submit"]:hover{
-    background-color:rgb(230, 230, 230);
+form input[type="submit"]:hover, #sendNew:hover, .giftlistRegistrerButton:hover{
+    background-color: black;
     transform: scale(1.01);
 }
-form input[type="submit"]:active{
+form input[type="submit"]:active, #sendNew:active, .giftlistRegistrerButton:active{
     -webkit-box-shadow: 0 5px 10px 5px rgba(0,0,0,0.2) !important;
     -moz-box-shadow: 0 5px 10px 5px rgba(0,0,0,0.2) !important;
     box-shadow: 0 5px 10px 5px rgba(0,0,0,0.2) !important;
@@ -82,8 +87,12 @@ form textarea:valid{
 }
 .container .radioDiv .radioLabel{
     margin-left: 0.2em;
+ 
 }
-
+#form> h1, h2 {
+    margin: 0px;
+    padding: 0px;
+}
 @media only screen and (max-width: 1279px) {
 
 }

@@ -1,9 +1,15 @@
 #giftlist input[type="number"], 
 #giftlist input[type="number"]:focus,
 #giftlist input[type="number"]:valid{
-    
-    background-color:rgb(238, 238, 238);
+    text-align: center;
+    height: 1.5em;
+    border-radius: 0em;
+    border: 1px;
+    border-color: black;
+    border-style: solid;
+    width: 2em;
 }
+
 input::-webkit-inner-spin-button {
     opacity: 1;
 }
@@ -25,6 +31,12 @@ input::-webkit-inner-spin-button {
 #giftlistContainer{
     width:100%;
 }
+#giftlist table{
+    width: 100%;
+}
+#giftlist {
+    padding-top: 1em;
+}
 #giftlist td{
     width:15%;
 }
@@ -34,4 +46,102 @@ input::-webkit-inner-spin-button {
 .giftName{
     width: 30%;
     cursor: pointer;
+    color: #1a0dab;
+    text-decoration: underline;
+    
+}
+
+.giftListSmallScreen {
+    display: none;
+}
+#giftlist input[type="number"]::-webkit-outer-spin-button,
+#giftlist input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    opacity: 1;
+}
+
+    /* Firefox */
+#gitlist input[type=number] {
+    -moz-appearance: textfield;
+    -webkit-appearance: none;
+    margin: 0;
+}
+@media only screen and (max-width: 600px) {
+    #giftListHeader{
+        display: none !important;
+    }
+    #giftlist tr{
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: -ms-flex;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        -moz-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        padding-bottom: 1em;
+    }
+    .giftlistPrice::before{
+        content: "Pris:";
+        font-weight: bold;
+        
+    }
+    
+    .giftlistStore::before{
+        content: "Butikk:";
+        font-weight: bold;
+        
+    }
+    .giftlistWish::before{
+        content: "Ønsket:";
+        font-weight: bold;
+        
+    }
+    .giftlistBought::before{
+        content: "Kjøpt:";
+        font-weight: bold;
+        
+    }
+    .giftlistRemaining::before{
+        content: "Gjenstår:";
+        font-weight: bold;
+        
+    }
+    .giftlistNumber::before{
+        content: "Antall:";
+        font-weight: bold;   
+    }
+    .giftlistElement{
+        width: 100% !important;
+        flex: 0 1 auto;
+        display: flex;
+        padding-top: 0.5em;
+        
+    }
+    .giftlistElement::before{
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 14px;
+        min-width: 100px;
+        text-align: left;
+    }
+    #giftlistContainer {
+        font-size: medium;
+    }
+    #giftlist tr{
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+    .giftName{
+        font-size: larger;
+        font-weight: bolder;
+    }
+   
+    .giftlistRegistrerButton{
+        width: 147px;
+    }
+    
+        
 }

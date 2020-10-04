@@ -63,7 +63,18 @@
         ?>
     
     </div>
-    <div id="slideshow"><i id="closeSlideshow" style="display:none;" class="material-icons">clear</i></div>
+    <div id="slideshow">
+        <i id="closeSlideshow" style="display:none;" class="material-icons">clear</i>
+        <div id="slideshowControl" style="display:none;">
+            <i id="previousPicture" class="material-icons">navigate_before</i>
+            <i id="pausePlay" class="material-icons">pause</i>
+            <i id="nextPicture" class="material-icons">navigate_next</i>
+        </div>
+    </div>
+    
+        
+        
+    </div>
 <script src="js/functions.js"></script>
 
 <script>
@@ -81,7 +92,7 @@
                 if(data!=0){
                     document.getElementById("picture").innerHTML = data+document.getElementById("picture").innerHTML;
                     addImageToSlideshow();
-                    // exifRotate();
+                    
                 }
             },
             
@@ -94,6 +105,9 @@
     document.getElementById("slideshow").addEventListener("click",close);
     document.getElementById("slideshow").addEventListener("mousemove",showClose);
     document.getElementById("closeSlideshow").addEventListener("click",close);
+    document.getElementById("previousPicture").addEventListener("click", prevImage);
+    document.getElementById("nextPicture").addEventListener("click", nextImage);
+    document.getElementById("pausePlay").addEventListener("click", pausePlay);
     function calcHeight(){
         var picturesEl = document.querySelectorAll(".item");
         var cols=1;
@@ -144,10 +158,12 @@
     function showClose(){
         clearTimeout(closeTimeout);
         document.getElementById("closeSlideshow").style.display ="block";
+        document.getElementById("slideshowControl").style.display="block";
         document.querySelector("body").style.cursor = "auto";
-        if($('#closeSlideshow:hover').length==0){
+        if($('#closeSlideshow:hover').length==0 && $('#slideshowControl:hover').length==0){
             closeTimeout = setTimeout(()=>{
                 document.getElementById("closeSlideshow").style.display ="none";
+                document.getElementById("slideshowControl").style.display="none";
                 document.querySelector("body").style.cursor = "none";
             },2000);
         }
@@ -226,34 +242,56 @@
             document.getElementById("slideshow").style.display ="none";
         }
     }
-    // function exifRotate(){
-    //     var imgEl = document.querySelectorAll("img");
-    //     for(var i = 0; i< imgEl.length; i++){
-    //         EXIF.getData(imgEl[i], function() {
-    //                 //console.log(EXIF.getTag(this, "Orientation") || 1);
-    //                 var exifRotation = (EXIF.getTag(this, "Orientation") || 1);
-    //                 switch(exifRotation){
-    //                     case 8:
-    //                         // document.getElementById(this.id).style.setProperty("transform", "rotate(270deg)");
-    //                         document.getElementById("item"+this.id).style.setProperty("transform", "rotate(270deg)");
-                            
-    //                         break;
-    //                     case 3:
-    //                         document.getElementById(this.id).style.setProperty("rotate", "180deg");
-    //                         break;
-    //                     case 6:
-    //                         // document.getElementById(this.id).style.setProperty("transform", "rotate(90deg)");
-    //                         document.getElementById("item"+this.id).style.setProperty("transform", "rotate(90deg)");
-    //                         break;
-    //                 }
-    //                 if(exifRotation !=1){
-    //                     // document.getElementById(this.id).style.setProperty("object-fit", "contain");
-    //                 }
-    //                 });
-    //     }
-        
-        
-    // }
+    function pausePlay(e){
+        var pausePlayEl = document.getElementById("pausePlay");
+        if (pausePlayEl.innerHTML == "pause"){
+            pausePlayEl.innerHTML ="play_arrow";
+            clearTimeout(slide);
+        } 
+        else{
+            pausePlayEl.innerHTML ="pause";
+            runSlideshow();
+        }
+    }
+    function prevImage(e){
+        var pausePlayEl = document.getElementById("pausePlay");
+        var activeImageEl = document.querySelector(".activeImg");
+        var idNum = parseInt(activeImageEl.id.substr(12));
+        if (idNum!=1){
+            var activeImage = document.getElementById("slideshowimg"+(--idNum));
+            activeImage.classList.add("activeImg");
+            activeImageEl.classList.remove("activeImg");
+        }
+        else{
+            var activeImage = document.getElementById("slideshowimg"+(document.querySelectorAll(".slideshowimg").length));
+            activeImage.classList.add("activeImg");
+            activeImageEl.classList.remove("activeImg");
+        }
+        if (pausePlayEl.innerHTML == "pause"){
+            clearTimeout(slide);
+            runSlideshow();
+        } 
+    }
+    function nextImage(e){
+        var pausePlayEl = document.getElementById("pausePlay");
+        var num = document.querySelectorAll(".slideshowimg").length;
+        var activeImageEl = document.querySelector(".activeImg");
+        var idNum = parseInt(activeImageEl.id.substr(12));
+        if (idNum!=num){
+            var activeImage = document.getElementById("slideshowimg"+(++idNum));
+            activeImage.classList.add("activeImg");
+            activeImageEl.classList.remove("activeImg");
+        }
+        else{
+            var activeImage = document.getElementById("slideshowimg"+1);
+            activeImage.classList.add("activeImg");
+            activeImageEl.classList.remove("activeImg");
+        }
+        if (pausePlayEl.innerHTML == "pause"){
+            clearTimeout(slide);
+            runSlideshow()
+        } 
+    }
 </script>
 </body>
 </html>

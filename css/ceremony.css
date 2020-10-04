@@ -16,9 +16,10 @@
 }
 #dinner{
     right:0;
+    
 }
 .map-container{
     display: table;
-    background-color: rgb(66, 66, 66);
-    color: whitesmoke;
+    background-color:whitesmoke;
+    color: black;
 }

@@ -110,6 +110,7 @@
     document.getElementById("previousPicture").addEventListener("click", prevImage);
     document.getElementById("nextPicture").addEventListener("click", nextImage);
     document.getElementById("pausePlay").addEventListener("click", pausePlay);
+    var scrollHeight = 0;
     function calcHeight(){
         var picturesEl = document.querySelectorAll(".item");
         var cols=1;
@@ -173,7 +174,6 @@
     function addImageToSlideshow(){
         
         var imagesEl = document.querySelectorAll(".image");
-        console.log(imagesEl.length);
         var imagesEl = document.querySelectorAll(".image");
         var slideshowEl = document.getElementById("slideshow");
         for (var i = 0; i< imagesEl.length; i++){
@@ -191,7 +191,7 @@
         }
     }
     function showImage(number){
-        
+        scrollHeight = window.scrollY;
         var imagesEl = document.querySelectorAll(".image");
         var slideshowEl = document.getElementById("slideshow");
         slideshowEl.style.display ="block";
@@ -242,6 +242,7 @@
             document.querySelector("body").style.cursor = "auto";
             document.getElementById("picture").style.display ="flex";
             document.getElementById("slideshow").style.display ="none";
+            window.scrollTo(0,scrollHeight);
         }
     }
     function pausePlay(e){
@@ -257,18 +258,33 @@
     }
     function prevImage(e){
         var pausePlayEl = document.getElementById("pausePlay");
-        var activeImageEl = document.querySelector(".activeImg");
-        var idNum = parseInt(activeImageEl.id.substr(12));
-        if (idNum!=1){
-            var activeImage = document.getElementById("slideshowimg"+(--idNum));
-            activeImage.classList.add("activeImg");
-            activeImageEl.classList.remove("activeImg");
+        var activeImageEl;
+        var imagesEl = document.querySelectorAll(".slideshowimg");
+        var imgEl = document.querySelectorAll(".image");
+        var num = 0;
+        for (var i = 0; i < imagesEl.length; i++){
+            if (imagesEl[i].classList.contains("activeImg")){
+                activeImageEl = imagesEl[i];
+                var idNum = activeImageEl.id.substr(12);
+                for (var j = 0; j < imgEl.length; j++){
+                    if (imgEl[j].id == "img"+idNum){
+                        num = j;
+                        break;
+                    }
+                } 
+            }
+        }
+        var idNum;
+        if (num!=0){
+            var idNum = imgEl[--num].id.substr(3);
         }
         else{
-            var activeImage = document.getElementById("slideshowimg"+(document.querySelectorAll(".slideshowimg").length));
-            activeImage.classList.add("activeImg");
-            activeImageEl.classList.remove("activeImg");
+            var idNum = imgEl[imgEl.length-1].id.substr(3);
         }
+        var activeImage = document.querySelector("#slideshowimg"+idNum);
+        activeImage.classList.add("activeImg");
+        activeImageEl.classList.remove("activeImg");
+
         if (pausePlayEl.innerHTML == "pause"){
             clearTimeout(slide);
             runSlideshow();
@@ -276,19 +292,33 @@
     }
     function nextImage(e){
         var pausePlayEl = document.getElementById("pausePlay");
-        var num = document.querySelectorAll(".slideshowimg").length;
-        var activeImageEl = document.querySelector(".activeImg");
-        var idNum = parseInt(activeImageEl.id.substr(12));
-        if (idNum!=num){
-            var activeImage = document.getElementById("slideshowimg"+(++idNum));
-            activeImage.classList.add("activeImg");
-            activeImageEl.classList.remove("activeImg");
+        var activeImageEl;
+        var imagesEl = document.querySelectorAll(".slideshowimg");
+        var imgEl = document.querySelectorAll(".image");
+        var num = 0;
+        for (var i = 0; i < imagesEl.length; i++){
+            if (imagesEl[i].classList.contains("activeImg")){
+                activeImageEl = imagesEl[i];
+                var idNum = activeImageEl.id.substr(12);
+                for (var j = 0; j < imgEl.length; j++){
+                    if (imgEl[j].id == "img"+idNum){
+                        num = j;
+                        break;
+                    }
+                } 
+            }
+        }
+        var idNum;
+        if (num!=imgEl.length-1){
+            var idNum = imgEl[++num].id.substr(3);
         }
         else{
-            var activeImage = document.getElementById("slideshowimg"+1);
-            activeImage.classList.add("activeImg");
-            activeImageEl.classList.remove("activeImg");
+            var idNum = imgEl[0].id.substr(3);
         }
+        var activeImage = document.querySelector("#slideshowimg"+idNum);
+        activeImage.classList.add("activeImg");
+        activeImageEl.classList.remove("activeImg");
+        
         if (pausePlayEl.innerHTML == "pause"){
             clearTimeout(slide);
             runSlideshow()

@@ -89,7 +89,7 @@ form textarea:valid{
     margin-left: 0.2em;
  
 }
-#form> h1, h2 {
+#form> h1, #form h2 {
     margin: 0px;
     padding: 0px;
 }

@@ -34,9 +34,11 @@
     <div class="page" id="page1">
         <br>
         <div id="marry">
+            
             <h2 >Vi gifter oss!</h2>
             <h1>Esther-Emilie & Håkon</h1>
             <h2>26.06.2021</h2>
+            
         </div>
     </div>
     

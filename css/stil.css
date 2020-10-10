@@ -99,6 +99,9 @@ i{
     font-size: larger;
     z-index: 2;  
 }
+#marry > h1, #marry > h2 {
+    text-shadow: -4px 4px 8px #515151;
+}
 
 .closed{
     width: 100%;
@@ -187,7 +190,12 @@ i{
         margin: 5px;
         padding: 5px;
     }
-
+    .info:hover{
+        background-color:black;
+        opacity: 50%;
+        color: whitesmoke !important;
+    }
+    
  
 }
 @media only screen and (max-width: 800px) {

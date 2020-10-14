@@ -5,7 +5,6 @@
     overflow: auto;
     width: 50vw;
     padding: 4vh;
-    padding-top: 80px;
     background-color: whitesmoke;
     -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
     -moz-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
@@ -13,6 +12,7 @@
     box-sizing: border-box;
     font-size: large;
     display: table;
+    padding-top:90px; 
     
 }
 .iframeMap{

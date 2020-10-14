@@ -20,7 +20,7 @@
 <body onload="setTop()">
     <div id="nav" class="closed">
         <ul>
-            <li><a class="info" onclick="scrollToPage(1)" >Til toppen</a></li>
+            <li><a class="info" onclick="scrollToPage(1)" style="color: khaki;">Til toppen</a></li>
             <li><a class="info" onclick="scrollToPage(2)">Vielse</a></li>
             <li><a class="info" onclick="scrollToPage(3)">Fest</a></li>
             <li><a class="info" onclick="scrollToPage(4)">Registrer</a></li>

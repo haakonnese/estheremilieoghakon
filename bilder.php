@@ -8,14 +8,10 @@
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/site-specific.css">
     <link rel="stylesheet" type="text/css" href="css/stil.css">
-    
-    <!-- <link rel="stylesheet" type="text/css" href="css/pictureShow.css"> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" type="text/css" href="css/pictureShowHorizontal.css">
     <script src="js/exif.js"></script>
 </head>
-<!-- onload="exifRotate()" -->
-<!-- <body onload="calcHeight()"> -->
     <body  >
     <div id="nav" class="closed scrolled">
         <ul>
@@ -32,11 +28,6 @@
         <a id="ham" class="hamClass" onclick="openNav(false)"><i class="material-icons">menu</i></a>
     </div>
     <div id="picture" >
-    <!-- <div class="column" id="column0"></div>
-    <div class="column" id="column1"></div>
-    <div class="column" id="column2"></div>
-    <div class="column" id="column3"></div>
-    <div class="column" id="column4"></div> -->
         <?php
         $servername = "localhost";
         $username = "root";

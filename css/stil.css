@@ -33,6 +33,23 @@ i{
 #ham {
     display: none;
 }
+#countDown {
+    width: 70%;
+    position: absolute;
+    bottom: 2em;
+    left: 50%;
+    transform: translate(-50%);
+}
+.fade>* {
+    opacity: 0;
+    transition: opacity 400ms ease-in;
+    /* transform: translateY(50%); */
+}
+
+.fade.appear >* {
+    opacity: 1;
+    /* transform: translateY(0); */
+}
 /* #home{
     left: 50%;
     position: fixed;

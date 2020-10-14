@@ -37,6 +37,9 @@
         font-size: small;
       
     }
+    .pageimg {
+        display: none;
+    }
     .container> .container-info, .container>div>iframe{
         position: relative !important;
         width:100% !important;

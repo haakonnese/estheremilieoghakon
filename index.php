@@ -38,11 +38,11 @@
             <h2 >Vi gifter oss!</h2>
             <h1>Esther-Emilie & Håkon</h1>
             <h2>26.06.2021</h2>
-            
+            <h2 id="countDown"></h2>
         </div>
     </div>
     
-    <div class="page" id="page2">
+    <div class="page fade" id="page2">
         <div id="page2img" class="pageimg"></div>
         <div class="container map-container" id="ceremony">
             <div id="ceremony-info" class="map-info">
@@ -56,7 +56,7 @@
             </div>
         </div>
     </div>
-    <div class="page" id="page3">
+    <div class="page fade" id="page3">
         <div id="page3img" class="pageimg"></div>
         <div class="container map-container" id="dinner">
             <div id="dinner-info" class="map-info">
@@ -70,38 +70,36 @@
             </div>
         </div>
     </div>
-    <div class="page" id="page4">
-    <div  id="page4img" class="pageimg"></div>
-    <div class="container" id="registration">
-        
-           
+    <div class="page fade" id="page4">
+        <div  id="page4img" class="pageimg"></div>
+        <div class="container" id="registration">
             <div class="container-info" id="form">
-            <h1>Registrer om du kommer eller ikke</h1>
-            <h3>Er dere flere, registrer individuelt for hver person</h3>
-            <form id="contact-form" onsubmit="return sendRSVP()" method="post"> 
-            <div>
-                <input type="text" name="name" required>
-                <label class="infoLabel">Navn</label>
-            </div>
-            <div>
-                <input type="email" name="email" required>
-                <label class="infoLabel">Email</label>
-            </div>
-            <div>
-                <div class="radioDiv">
-                    <input id="can" type="radio" name="rsvp" value="Kan komme" required class="radio-button">
-                    <label for="can" class="radioLabel">Jeg kan komme</label>
-                </div>
-                <div class="radioDiv">                    
-                    <input id="cannot" type="radio" name="rsvp" value="Kan IKKE komme" required class="radio-button">
-                    <label for="cannot" class="radioLabel">Jeg kan <b>IKKE</b> komme</label>
-                </div>
-            </div>
-           
-            <div>
-            <input type="submit" name="submit" value="Send">
-            </div>
-            </form>
+                <h1>Registrer om du kommer eller ikke</h1>
+                <h3>Er dere flere, registrer individuelt for hver person</h3>
+                <form id="contact-form" onsubmit="return sendRSVP()" method="post"> 
+                    <div>
+                        <input type="text" name="name" required>
+                        <label class="infoLabel">Navn</label>
+                    </div>
+                    <div>
+                        <input type="email" name="email" required>
+                        <label class="infoLabel">Email</label>
+                    </div>
+                    <div>
+                        <div class="radioDiv">
+                            <input id="can" type="radio" name="rsvp" value="Kan komme" required class="radio-button">
+                            <label for="can" class="radioLabel">Jeg kan komme</label>
+                        </div>
+                        <div class="radioDiv">                    
+                            <input id="cannot" type="radio" name="rsvp" value="Kan IKKE komme" required class="radio-button">
+                            <label for="cannot" class="radioLabel">Jeg kan <b>IKKE</b> komme</label>
+                        </div>
+                    </div>
+                
+                    <div>
+                    <input type="submit" name="submit" value="Send">
+                    </div>
+                </form>
             </div>
             
             <div class="container-info" id="submitted-form" style="display:none">
@@ -116,7 +114,7 @@
 
         </div>
     </div>
-    <div class="page" id="page5">
+    <div class="page fade" id="page5">
         <div id="toastmaster" class="container">
             <h1>Toastmastere</h1>
             <div id="toastmaster-table">
@@ -173,16 +171,16 @@
         </div>
 
     </div>
-    <div class="page" id="page6">
+    <div class="page fade" id="page6">
         <div class="container" id="travel">
             <h1>Reise</h1>
-                <h2>Alternativer</h2>
-                <p>Fly til Bardufoss + flybuss/leiebil<br>
-                Fly til Tromsø + hurtigbåt/leiebil<br>
-                Fly til Evenes + taxi eller buss og hurtigbåt/leiebil</p>
+            <h2>Alternativer</h2>
+            <p>Fly til Bardufoss + flybuss/leiebil<br>
+            Fly til Tromsø + hurtigbåt/leiebil<br>
+            Fly til Evenes + taxi eller buss og hurtigbåt/leiebil</p>
         </div>
     </div>
-    <div class="page" id="page7">
+    <div class="page fade" id="page7">
         <div class="container" id="giftlistContainer">
         <h1>Gaveliste</h1>
             <input type="checkbox" id="showZeroRemaining" checked><label>Vis kjøpte</label>
@@ -200,6 +198,70 @@
     </div>
 <script src="js/functions.js"></script>
 <script>
+    const appearOptions = {
+        threshold: 0.5
+    };
+    const faders = document.querySelectorAll(".fade");
+    const appearOnScroll = new IntersectionObserver( function(entries, appearOnScroll){
+        entries.forEach(entry => {
+            if (!entry.isIntersecting){
+                return;
+            } else {
+                entry.target.classList.add("appear");
+                appearOnScroll.unobserve(entry.target);
+            }
+        })
+    }, appearOptions);
+    faders.forEach( fader => {
+        appearOnScroll.observe(fader);
+    });
+    function countDown(){
+        var countDownDate = new Date("Jun 26, 2021 13:30:00").getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        // Display the result in the element with id="demo"
+        var dager = " dager, ";
+        var timer = " timer,</br>";
+        var minutter = " min og ";
+        var sekunder = " sek";
+        if (days== 1){
+            dager=" dag, ";
+        }
+        if (hours ==1){
+            timer = " time,</br>";
+        }
+        if (days>0){
+            document.getElementById("countDown").innerHTML = days + dager + hours + timer+ minutes+ minutter +  seconds+ sekunder;
+        }
+        else if (hours >0){
+            document.getElementById("countDown").innerHTML = hours + timer+ minutes+ minutter + seconds+ sekunder;
+        }
+        else if (minutes > 0) {
+            document.getElementById("countDown").innerHTML = minutes+ minutter +  seconds+ sekunder;
+        }
+        else {
+            document.getElementById("countDown").innerHTML = seconds+ sekunder;
+        }
+        // If the count down is finished, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("countDown").innerHTML = "NYGIFT";
+        }
+        }, 1000);
+    }
     var page = 1;
     const PERCENTAGE = 0.15;
     var positionY = 0;
@@ -224,6 +286,7 @@
         $("#sortInitial").css("display","none");
     }
     function setTop(){
+        countDown();
         setColor();
         giftList();
         for (var i = 0; i < pagesEl.length; i++){

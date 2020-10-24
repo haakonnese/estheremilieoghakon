@@ -1,11 +1,19 @@
 <?php
+        ob_start();
         $servername = "localhost";
         $username = "root";
         $password = "";
         $dbname = "bryllup";
         $conn = mysqli_connect($servername,$username,$password,$dbname);
+        class Image {
+            public $id;
+            public $number;
+            public $url;
+        }
+        $data = array();
         if(!$conn)
-            echo 0;
+            die();
+        
         else{
             $query = $conn->query("SELECT * FROM images WHERE status = 1 ORDER BY uploaded_on ASC");
             $number = 0;
@@ -15,15 +23,21 @@
                     if($number++<$numberOfPictures)
                         continue;
                     
-                    $imageURL = 'images/'.$row["file_name"];
                     
-                    echo "<div class='item' id='itemimg". $number."'>";
-                    echo "<img class='image' onclick='showImage(".$number.")' id='img".$number."' src='".$imageURL."' loading='lazy' alt='bilde'\>";
-                    echo"</div>";
+                    $im = new Image();
+                    
+                    $imageURL = 'images/'.$row["file_name"];
+                    $im->id = "itemimg".$number;
+                    $im->number = $number;
+                    $im->url = $imageURL;
+                    array_push($data, json_encode($im));
                 }
                 
+                
             }  
-            else echo 0;
+            
             mysqli_close($conn);
+            ob_end_clean();
+            echo json_encode($data);
         }
 ?>   

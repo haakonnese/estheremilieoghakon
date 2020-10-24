@@ -81,9 +81,16 @@
             type: "post",
             url: "fetch",
             data: "numberOfPictures="+numberOfPictures,
+            dataType: "json",
             success: function(data){
                 if(data!=0){
-                    document.getElementById("picture").innerHTML = data+document.getElementById("picture").innerHTML;
+                    for (var i = 0; i < data.length; i++) {
+                        try {
+                            var obj = JSON.parse(data[i]);
+                            document.getElementById("picture").innerHTML = "<div class='item' id='"+obj.id+"'><img class='image' onclick='showImage("+obj.number+")' id='img"+obj.number+"' src='"+obj.url+"' loading='lazy' alt='bilde'\></div>" +document.getElementById("picture").innerHTML;
+                        } catch (error) {   
+                        }                        
+                    }
                     addImageToSlideshow();
                     
                 }

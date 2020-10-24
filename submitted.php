@@ -1,9 +1,10 @@
 <?php
 $to = $_POST["email"];
 $subject = $_POST["name"]. ": ".$_POST["rsvp"];
-// if(mail("haakon.nese@gmail.com","Test", $_POST["name"])){
-//     echo "Sendt";
-// }
+//if(!mail("haakon.nese@gmail.com","Velkommen", $_POST["name"])){
+  //   echo "Ikke sendt";
+//}
+
 $headers = 'From: Håkon Nese og Esther-Emilie Steilbu' . "\r\n";
 
     

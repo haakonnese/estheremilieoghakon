@@ -389,13 +389,13 @@
                 type: "post",
                 url: "updateGiftList",
                 data: "id="+id+"&bought="+bought,
-                success: function(data){
-                    if (data){
-                        console.log(data);
-                    }
-                    else
-                        console.log("FEIL\n"+data);
-                }
+                // success: function(data){
+                //     if (data){
+                //         console.log(data);
+                //     }
+                //     else
+                //         console.log("FEIL\n"+data);
+                // }
             })
             setTimeout(() =>{
                 giftList();

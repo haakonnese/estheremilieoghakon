@@ -11,7 +11,7 @@
     $allowTypesImage = array('jpg','png','jpeg','gif'); 
     $statusMsg = $errorMsg = $insertValuesSQL = $errorUpload = $errorUploadType = ''; 
     $fileNames = array_filter($_FILES['files']['name']); 
-    
+    $data = array();
     if(!empty($fileNames)){ 
         foreach($_FILES['files']['name'] as $key=>$val){ 
             // File upload path 
@@ -77,18 +77,22 @@
             }else{ 
                 $statusMsg = "Beklager, det oppstod et problem når du prøvde å laste opp filen."; 
             } 
-            ob_end_clean();
         } 
         else{
-            ob_end_clean();
-            echo "Ingen filer lastet opp: ". $errorUpload;
+            array_push($data,"Ingen filer lastet opp: ". $errorUpload);
         }
     }else{ 
+        
         $statusMsg = 'Venligst velg en eller flere bilder/videoer som du ønsker å laste opp.'; 
     } 
     mysqli_close($conn);
     // Display status message 
-    echo $statusMsg; 
+    if ($statusMsg != "") {
+        array_push($data, $statusMsg); 
+    }
+    ob_end_clean();
+    echo json_encode($data);
+
     function compressImage($source,$filename, $targetFilePath, $showFile) {
 
         $info = getimagesize($source);

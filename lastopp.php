@@ -28,12 +28,15 @@
             
             contentType: false,
             processData: false,
-            success: function(data){
-                document.querySelector("body").innerHTML+=data;
+            success: function(data){ 
+                try {
+                    var obj = JSON.parse(data);
+                    for (var i = 0; i < obj.length; i++) {
+                        document.querySelector("body").innerHTML+=obj[i]+'<br>';
+                    }   
+                } catch (error) {
+                }
             },
-            error:  function(data){
-                document.querySelector("body").innerHTML+=data;
-            }
         });
 
         return false;

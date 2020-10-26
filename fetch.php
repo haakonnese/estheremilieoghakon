@@ -32,12 +32,9 @@
                     $im->url = $imageURL;
                     array_push($data, json_encode($im));
                 }
-                
-                
             }  
-            
             mysqli_close($conn);
             ob_end_clean();
             echo json_encode($data);
         }
-?>   
+?>

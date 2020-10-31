@@ -11,7 +11,6 @@
     <link rel="stylesheet" type="text/css" href="css/stil.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" type="text/css" href="css/pictureShowHorizontal.css">
-    <script src="js/exif.js"></script>
 </head>
 
 <body>

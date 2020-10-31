@@ -5,7 +5,7 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <title>EE&H 26.06.2021</title>
     <script src="jquery-3.5.1.min.js"></script>
-
+    <link href="background-images/logo.png" rel="icon" type="image/png">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/site-specific.css">
     <link rel="stylesheet" type="text/css" href="css/stil.css">
@@ -87,8 +87,12 @@
                         <label class="infoLabel">Navn</label>
                     </div>
                     <div>
-                        <input type="email" name="email" required>
-                        <label class="infoLabel">Email</label>
+                        <input id="phoneNumber" type="number" placeholder="Telefonnummer" name="phoneNumber" required>
+                        <label class="infoLabel">Telefonnummer</label>
+                    </div>
+                    <div>
+                        <input id="allergier" type="text" placeholder="Allergi" name="allergier">
+                        <label class="infoLabel">Allergier</label>
                     </div>
                     <div>
                         <div class="radioDiv">
@@ -148,23 +152,24 @@
                 <h1>Send inn her om du skal gjøre noe</h1>
                 <form id="contact-form-toastmaster" onsubmit="return sendToastmaster()" method="post">
                     <div>
-                        <input type="text" name="name" required />
+                        <input type="text" name="nameToast" required />
                         <label class="infoLabel">Navn</label>
                     </div>
                     <div>
-                        <input type="email" name="email" required />
+                        <input type="email" name="emailToast" required />
                         <label class="infoLabel">Email</label>
                     </div>
                     <div>
-                        <input type="text" name="what" required />
+                        <input type="text" name="whatToast" required />
                         <label class="infoLabel">Hva du skal gjøre</label>
                     </div>
                     <div>
-                        <input type="text" name="relationship" required />
+                        <input type="text" name="relationshipToast" required />
                         <label class="infoLabel">Hvordan kjenner du brudeparet</label>
                     </div>
                     <div>
-                        <input type="number" name="minutes" min="0" oninput="validity.valid||(value='');" required />
+                        <input type="number" name="minutesToast" min="0" oninput="validity.valid||(value='');"
+                            required />
                         <label class="infoLabel">Antall minutt</label>
                     </div>
 
@@ -172,6 +177,7 @@
                         <input type="submit" name="submit" value="Send">
                     </div>
                 </form>
+                <div class="popup" id="popupToastmaster"></div>
             </div>
 
         </div>
@@ -191,16 +197,16 @@
             <h1>Gaveliste</h1>
             <input type="checkbox" id="showZeroRemaining" checked><label>Vis kjøpte</label>
             <select id="sortGiftList">
-                <option id="sortInitial" value="id">Sorter</option>
+                <option value="store ASC">Butikk</option>
                 <option value="gjenstaende ASC">Gjenstående stigende</option>
                 <option value="gjenstaende DESC">Gjenstående synkende</option>
                 <option value="price ASC">Pris stigende</option>
                 <option value="price DESC">Pris synkende</option>
-                <option value="store ASC">Butikk</option>
+
             </select>
             <div id="giftlist"></div>
         </div>
-        <div id="popup"></div>
+        <div class="popup" id="popup"></div>
     </div>
     <script src="js/functions.js"></script>
     <script>
@@ -282,14 +288,10 @@
     var topp = false;
     var bottom = false;
     var scrolledTimeOut;
+    const webadress = "toastmaster@estheremilieoghakon.no";
 
     $("#showZeroRemaining").on("change", giftList);
-    $("#sortGiftList").on("change", updateSort);
-
-    function updateSort() {
-        giftList();
-        $("#sortInitial").css("display", "none");
-    }
+    $("#sortGiftList").on("change", giftList);
 
     function setTop() {
         countDown();
@@ -349,18 +351,29 @@
             setOverlayHeight(0);
         }
     }
+    $('input[name="rsvp"]').change(function(e) {
+        console.log($(this).val());
+        if ($(this).val() == "Kan IKKE komme") {
+
+            document.querySelector('#phoneNumber').required = false;
+        } else {
+            document.querySelector('#phoneNumber').required = true;
+        }
+    });
 
     function sendRSVP() {
         var buttonEl = document.getElementById("submit");
         var name = document.querySelector('input[name="name"]').value;
-        var email = document.querySelector('input[name="email"]').value;
+        var phoneNumber = document.querySelector('input[name="phoneNumber"]').value;
+        var allergier = document.querySelector('input[name="allergier"]').value;
         var rsvp = document.querySelector('input[name="rsvp"]:checked').value;
 
         $.ajax({
             type: "post",
             url: "submitted",
-            data: "name=" + name + "&email=" + email + "&rsvp=" + rsvp,
+            data: "name=" + name + "&phoneNumber=" + phoneNumber + "&allergier=" + allergier + "&rsvp=" + rsvp,
             success: function(data) {
+                console.log(data);
                 if (data == '1') {
                     document.getElementById("form").style.display = "none";
                     document.getElementById("submitted-form").style.display = "block";
@@ -381,6 +394,55 @@
         document.getElementById("contact-form").reset();
         document.getElementById("form").style.display = "block";
         document.getElementById("submitted-form").style.display = "none";
+    }
+
+    function sendToastmaster() {
+        var name = document.querySelector('input[name="nameToast"]').value;
+        var email = document.querySelector('input[name="emailToast"]').value;
+        var relationship = document.querySelector('input[name="relationshipToast"]').value;
+        var what = document.querySelector('input[name="whatToast"]').value;
+        var minutes = document.querySelector('input[name="minutesToast"]').value;
+        var popupEl = document.getElementById("popupToastmaster");
+        $.ajax({
+            type: "post",
+            url: "submittedToastmaster",
+            data: "name=" + name + "&email=" + email + "&what=" + what + "&relationship=" + relationship +
+                "&minutes=" + minutes,
+            success: function(data) {
+                console.log(data);
+                if (data == '1') {
+                    setTimeout(() => {
+                        popupEl.style.display = "block";
+                        popupEl.innerHTML = "<h1>Takk for at du deltar</h1>";
+                        setTimeout(() => {
+                            popupEl.style.display = "none";
+                        }, 8000);
+                    }, 200);
+                }
+                else {
+                    setTimeout(() => {
+                        popupEl.style.display = "block";
+                        popupEl.innerHTML = "<h1>Det skjedde en feil. Ta kontakt på" + webadress +
+                            "</h1>";
+                        setTimeout(() => {
+                            popupEl.style.display = "none";
+                        }, 8000);
+                    }, 200);
+                }
+
+            },
+            error: function(data) {
+                setTimeout(() => {
+                        popupEl.style.display = "block";
+                        popupEl.innerHTML = "<h1>Det skjedde en feil. Ta kontakt på" + webadress +
+                            "</h1>";
+                        setTimeout(() => {
+                            popupEl.style.display = "none";
+                        }, 8000);
+                    }, 200);
+            }
+        });
+        return false;
     }
 
     function kjop(id) {
@@ -572,6 +634,7 @@
                 var giftListEl = document.getElementById("giftlist");
                 var streng = "<table> \
                                     <tr id='giftListHeader'> \
+                                    <th></th> \
                                     <th>Navn</th> \
                                     <th>Pris</th> \
                                     <th>Butikk</th> \
@@ -594,6 +657,9 @@
                                 streng += "<tr id='gift" + obj.id +
                                     "'style='background-color:rgba(0, 0, 0, 0.04);'>";
                             }
+                            streng +=
+                                "<td class='giftPicture giftlistElement'> <img class='giftlistImg' src='images/giftlist/" +
+                                obj.picture + "'/>";
                             streng += "<td class='giftName giftlistElement' id='name" + obj.id +
                                 "' onclick=\"window.open('" + obj.link + "')\" >" + obj.navn + "</td> \
                                         <td class='giftlistPrice giftlistElement'>" + obj.price +

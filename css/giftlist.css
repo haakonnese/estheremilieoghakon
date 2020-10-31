@@ -13,7 +13,7 @@
 input::-webkit-inner-spin-button {
     opacity: 1;
 }
-#popup{
+.popup {
     display: none;
     position: absolute;
     height:auto;
@@ -51,6 +51,16 @@ input::-webkit-inner-spin-button {
     
 }
 
+.giftlistImg {
+    height: 70px;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+.giftPicture {
+    padding:0;
+    margin: 0;
+}
 .giftListSmallScreen {
     display: none;
 }
@@ -66,6 +76,11 @@ input::-webkit-inner-spin-button {
     -moz-appearance: textfield;
     -webkit-appearance: none;
     margin: 0;
+}
+@media only screen and (min-width: 601px) {
+    .giftlistRegistrerButton {
+        height: 68px;
+    }
 }
 @media only screen and (max-width: 600px) {
     #giftListHeader{
@@ -83,6 +98,8 @@ input::-webkit-inner-spin-button {
         flex-wrap: wrap;
         padding-bottom: 1em;
     }
+ 
+  
     .giftlistPrice::before{
         content: "Pris:";
         font-weight: bold;
@@ -117,6 +134,7 @@ input::-webkit-inner-spin-button {
         width: 100% !important;
         flex: 0 1 auto;
         display: flex;
+        order: 5;
         padding-top: 0.5em;
         
     }
@@ -135,10 +153,16 @@ input::-webkit-inner-spin-button {
         padding-right: 1em;
     }
     .giftName{
+        flex: 0 1 100px;
+        order: 1;
         font-size: larger;
         font-weight: bolder;
+        align-self: center;
     }
-   
+    .giftPicture {
+        order: 2;
+        flex: 0 1 45%;
+    }
     .giftlistRegistrerButton{
         width: 147px;
     }

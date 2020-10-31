@@ -47,6 +47,8 @@
             $obj->link = $row['link'];
             $obj->navn = $row['navn'];
             $obj->store = $row['store'];
+            $obj->picture = $row['picture'];
+            
             array_push($data, json_encode($obj));
         }
         

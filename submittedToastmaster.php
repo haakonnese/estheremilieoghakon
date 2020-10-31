@@ -1,9 +1,14 @@
 <?php
 $to = "haakon.nese@gmail.com";
-$subject = $_POST["name"]. ": ".$_POST["rsvp"];
+$subject = "Toastmaster: ".$_POST["name"]. " ønsker å gjøre noe";
 //if(!mail("haakon.nese@gmail.com","Velkommen", $_POST["name"])){
   //   echo "Ikke sendt";
 //}
+$message = "Navn: ". $_POST["name"]."\n";
+$message .= "Email: ". $_POST["email"]."\n";
+$message .= "Hva skal du gjøre: ". $_POST["what"]."\n";
+$message .= "Hvordan kjenner du brudeparet: ". $_POST["relationship"]."\n";
+$message .= "Antall minutt: ". $_POST["minutes"];
 
 $headers = 'From: Håkon Nese og Esther-Emilie Steilbu' . "\r\n";
 
@@ -21,14 +26,11 @@ $conn = mysqli_connect($servername,$username,$password,$dbname);
 if(!$conn)
     die('0');
 else{
-    if ( $_POST["rsvp"] == "Kan komme") {
-        $sql = "INSERT INTO kankomme (navn, telefonnummer, allergier) 
-        VALUES ('".$_POST["name"]."', '".$_POST["phoneNumber"]."', '".$_POST["allergier"]."')";
+   
+    $sql = "INSERT INTO toastmaster (navn, email, hva, kjenner, minutter) 
+        VALUES ('".$_POST["name"]."', '".$_POST["email"]."', '".$_POST["what"]."', '".$_POST["relationship"]."', '".$_POST["minutes"]."')";
     }
-    else if ( $_POST["rsvp"] == "Kan IKKE komme") {
-        $sql = "INSERT INTO kanikkekomme (navn, telefonnummer) 
-        VALUES ('".$_POST["name"]."', '".$_POST["phoneNumber"]."')";
-    }
+   
     
 // mail
 
@@ -39,8 +41,8 @@ else{
          echo '1';
     }  
     mysqli_close($conn);
-}
-if(!mail($to,$subject, $_POST["allergier"])) {
+
+if(!mail($to,$subject, $message)) {
     echo '0';
 }
 ?>

@@ -23,6 +23,7 @@ form input[type="submit"],
 form input[type="text"], 
 form input[type="number"],
 form input[type="email"],
+form input[type="tel"],
 form textarea{
     background-color: inherit;
 }
@@ -61,7 +62,8 @@ form input[type="submit"]:active, #sendNew:active, .giftlistRegistrerButton:acti
     transition: 0.5s ease;
 }
 form input:focus ~ .infoLabel,
-form input:valid ~ .infoLabel,
+form input:required:valid ~ .infoLabel,
+form input:not(:required):not(:placeholder-shown) ~ .infoLabel,
 form textarea:focus ~ .infoLabel,
 form textarea:valid ~ .infoLabel
 {
@@ -72,14 +74,20 @@ form textarea:valid ~ .infoLabel
     color: black;
 }
 form input[type="text"]:focus,
-form input[type="text"]:valid,
+form input[type="text"]:required:valid,
 form input[type="number"]:focus,
+form input[type="tel"]:focus,
 form input[type="email"]:focus,
 form textarea:focus, 
-form input[type="number"]:valid,
-form input[type="email"]:valid,
+form input[type="number"]:required:valid,
+form input[type="email"]:required:valid,
+form input[type="tel"]:required:valid,
+form input:not(:required):not(:placeholder-shown),
 form textarea:valid{
     border-bottom: 2px solid black;
+}
+form input::placeholder{
+    color: transparent;
 }
 .container .radioDiv{
     margin-bottom: 1em;
@@ -89,6 +97,7 @@ form textarea:valid{
     margin-left: 0.2em;
  
 }
+
 /* #form> h1, #form h2 {
     margin: 0px;
     padding: 0px;

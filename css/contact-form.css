@@ -10,7 +10,7 @@ form textarea,
 form input[type="submit"],
 #sendNew{
     padding: .3em 2%;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
     width: 100%;
     box-sizing: border-box;
     box-shadow: none;
@@ -30,9 +30,9 @@ form textarea{
 
 form input[type="submit"], #sendNew,.giftlistRegistrerButton{
     border: 1px solid rgba(0,0,0,0.1) !important;
-    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-    -moz-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1) !important;
+    -moz-box-shadow:0 15px 30px -10px rgba(0,0,0,0.1) !important;
+    box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1) !important;
     cursor: pointer;
     transition: 0.2s ease;
     height: 3.5em;
@@ -45,9 +45,9 @@ form input[type="submit"]:hover, #sendNew:hover, .giftlistRegistrerButton:hover{
     transform: scale(1.01);
 }
 form input[type="submit"]:active, #sendNew:active, .giftlistRegistrerButton:active{
-    -webkit-box-shadow: 0 5px 10px 5px rgba(0,0,0,0.2) !important;
-    -moz-box-shadow: 0 5px 10px 5px rgba(0,0,0,0.2) !important;
-    box-shadow: 0 5px 10px 5px rgba(0,0,0,0.2) !important;
+    -webkit-box-shadow: 0 15px 30px -10px rgba(0,0,0,0.2) !important;
+    -moz-box-shadow:0 15px 30px -10px rgba(0,0,0,0.2) !important;
+    box-shadow: 0 15px 30px -10px rgba(0,0,0,0.2) !important;
 }
 .container form div{
     position: relative;

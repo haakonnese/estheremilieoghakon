@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="css/ceremony.css">
     <link rel="stylesheet" type="text/css" href="css/toastmaster.css">
     <link rel="stylesheet" type="text/css" href="css/giftlist.css">
+    <link rel="stylesheet" type="text/css" href="css/travel.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
@@ -21,25 +22,25 @@
 <body onload="setTop()">
     <div id="nav" class="closed">
         <ul>
-            <li><a class="info" onclick="scrollToPage(1)" style="color: khaki;">Til toppen</a></li>
-            <li><a class="info" onclick="scrollToPage(2)">Vielse</a></li>
-            <li><a class="info" onclick="scrollToPage(3)">Fest</a></li>
-            <li><a class="info" onclick="scrollToPage(4)">Registrer</a></li>
-            <li><a class="info" onclick="scrollToPage(5)">Toastmaster</a></li>
-            <li><a class="info" onclick="scrollToPage(6)">Reise og overnatting</a></li>
-            <li><a class="info" onclick="scrollToPage(7)">Gaveliste</a></li>
-            <li><a class="info" href="bilder">Bilder</a></li>
+            <li><a class="info a" onclick="scrollToPage(1)" style="color: khaki;">Til toppen</a></li>
+            <li><a class="info a" onclick="scrollToPage(2)">Vielse</a></li>
+            <li><a class="info a" onclick="scrollToPage(3)">Fest</a></li>
+            <li><a class="info a" onclick="scrollToPage(4)">Registrer</a></li>
+            <li><a class="info a" onclick="scrollToPage(5)">Toastmaster</a></li>
+            <li><a class="info a" onclick="scrollToPage(6)">Reise og overnatting</a></li>
+            <li><a class="info a" onclick="scrollToPage(7)">Gaveliste</a></li>
+            <li><a class="info a" href="bilder">Bilder</a></li>
         </ul>
-        <a id="ham" class="hamClass" onclick="openNav(false)"><i class="material-icons">menu</i></a>
+        <a id="ham" class="hamClass a" onclick="openNav(false)"><i class="material-icons">menu</i></a>
     </div>
     <div class="page" id="page1">
         <br>
         <div id="marry">
 
-            <h2>Vi gifter oss!</h2>
-            <h1>Esther-Emilie & Håkon</h1>
-            <h2>26.06.2021</h2>
-            <h2 id="countDown"></h2>
+            <h3>Vi gifter oss!</h3>
+            <h2>Esther-Emilie & Håkon</h2>
+            <h3>26.06.2021</h3>
+            <h3 id="countDown"></h3>
         </div>
     </div>
 
@@ -47,10 +48,10 @@
         <div id="page2img" class="pageimg"></div>
         <div class="container map-container" id="ceremony">
             <div id="ceremony-info" class="map-info">
-                <h1>Vielse</h1>
-                <h2>13:30</h2>
-                <h2>Lenvik kirke</h2>
-                <h3>Bjorelvnes, Senja kommune</h3>
+                <h2>Vielse</h2>
+                <h3>13:30</h3>
+                <h3>Lenvik kirke</h3>
+                <h4>Bjorelvnes, Senja kommune</h4>
             </div>
             <div id="ceremony-map" class="container-info map">
                 <iframe class="iframeMap"
@@ -63,10 +64,10 @@
         <div id="page3img" class="pageimg"></div>
         <div class="container map-container" id="dinner">
             <div id="dinner-info" class="map-info">
-                <h1>Fest</h1>
-                <h2>17:00</h2>
-                <h2>Skoghus leirsted</h2>
-                <h3>Senja</h3>
+                <h2>Fest</h2>
+                <h3>17:00</h3>
+                <h3>Skoghus leirsted</h3>
+                <h4>Senja</h3>
             </div>
             <div id="dinner-map" class="container-info map">
                 <iframe class="iframeMap"
@@ -79,7 +80,7 @@
         <div id="page4img" class="pageimg"></div>
         <div class="container" id="registration">
             <div class="container-info" id="form">
-                <h1>Registrer om du kommer eller ikke</h1>
+                <h2>Registrer om du kommer eller ikke</h2>
                 <h3>Er dere flere, registrer individuelt for hver person</h3>
                 <form id="contact-form" onsubmit="return sendRSVP()" method="post">
                     <div>
@@ -113,12 +114,12 @@
             </div>
 
             <div class="container-info" id="submitted-form" style="display:none">
-                <h1>Takk for svaret</h1>
+                <h2>Takk for svaret</h2>
                 <br>
                 <button id="sendNew" onclick="sendNew()">Registrer en person til</button>
             </div>
             <div class="container-info" id="unsubmitted-form" style="display:none">
-                <h1>Det skjedde en feil. Venligst kontakt 48075305 for å si i fra at du kommer.</h1>
+                <h2>Det skjedde en feil. Venligst kontakt 48075305 for å si i fra at du kommer.</h2>
             </div>
 
 
@@ -126,7 +127,7 @@
     </div>
     <div class="page fade" id="page5">
         <div id="toastmaster" class="container">
-            <h1>Toastmastere</h1>
+            <h2>Toastmastere</h2>
             <div id="toastmaster-table">
                 <div class="toastmaster-info" id="toastmaster-left">
                     <div class="toastmaster-img" id="toastmastermale"></div>
@@ -146,10 +147,10 @@
                 </div>
             </div>
             <button id="toastmaster-contact-button" onclick="setContactForm(true)">Kontakt oss</button>
-
+            
             <div id="overlay"></div>
             <div id="toastmaster-contact-form">
-                <h1>Send inn her om du skal gjøre noe</h1>
+                <h2>Send inn her om du skal gjøre noe</h2>
                 <form id="contact-form-toastmaster" onsubmit="return sendToastmaster()" method="post">
                     <div>
                         <input type="text" name="nameToast" required />
@@ -165,7 +166,7 @@
                     </div>
                     <div>
                         <input type="text" name="relationshipToast" required />
-                        <label class="infoLabel">Hvordan kjenner du brudeparet</label>
+                        <label class="infoLabel">Relasjon til brudeparet</label>
                     </div>
                     <div>
                         <input type="number" name="minutesToast" min="0" oninput="validity.valid||(value='');"
@@ -185,17 +186,44 @@
     </div>
     <div class="page fade" id="page6">
         <div class="container" id="travel">
-            <h1>Reise</h1>
-            <h2>Alternativer</h2>
-            <p>Fly til Bardufoss + flybuss/leiebil<br>
-                Fly til Tromsø + hurtigbåt/leiebil<br>
-                Fly til Evenes + taxi eller buss og hurtigbåt/leiebil</p>
+            <h2>Reisemuligheter</h2>
+            <p>Det er mulig å fly til Bardufoss (kun sas), Tromsø og Evenes. <br><br>
+                Fra Bardufoss flyplass tar det 40 min med bil, eventuelt litt lengre tid med flybuss. <br>
+                Fra Tromsø og Evenes tar det 2,5 timer å kjøre. Herfra er det også mulig å komme seg til Finnsnes ved
+                hjelp av buss og hurtigbåt.
+                Sjekk <a class="link" href="https://tromskortet.no" target="_blank">tromskortet.no</a> for reiseruter og
+                priser (fly og buss/båt korresponderer ikke nødvendigvis godt).<br><br>
+                Det er mulig å leie bil på alle flyplassene. Ettersom det er 25 minutters kjøring mellom vielse og
+                festlokale kan dette anbefales. Da vil det også være mulig å være litt turist på Senja, noe som kan
+                anbefales hvis du ikke har vært her før.
+            </p>
+            <h2>Overnatting</h2>
+            <p>Vi foreslår Skoghus som overnatting, hvor festen også er.</p>
+            <h3>Kapasitet</h3>
+            <p>Skoghus har ca. 50 sengeplasser. De har ett rom med 6 sengeplasser, to med 5, to med 4, og resten er 1, 2
+                eller 3 sengsrom.</p>
+            <h3>Priser per natt</h3>
+            <p>Enmannsrom: 650,-<br>
+                Tomannsrom: 800,- <br>
+                Utover to pers, koster hver person 200,- ekstra på samme rom.<br>
+                Rommene har oppredde senger og håndklær. Dersom du ønsker å ta med håndklær og sengetøy selv, blir
+                prisen noe redusert.
+            </p>
+            <h3>Bestill rom</h3>
+            <p style="margin-bottom: 0px">Send mail til <a href="mailto: skoghus@nlm.no">skoghus@nlm.no</a> med emne: EEH, overnatting, "Ditt eget
+                navn".<br><br>
+                Andre mulige overnattingsplasser er Finnsnes hotell, Senja Gaard, Soltun Soldatheim (en time å kjøre)
+                med flere.
+            </p>
+
+
+
         </div>
     </div>
     <div class="page fade" id="page7">
         <div class="container" id="giftlistContainer">
-            <h1>Gaveliste</h1>
-            <input type="checkbox" id="showZeroRemaining" checked><label>Vis kjøpte</label>
+            <h2>Gaveliste</h2>
+            <input type="checkbox" id="showZeroRemaining" checked><label>Vis kjøpte &#9;</label>
             <select id="sortGiftList">
                 <option value="store ASC">Butikk</option>
                 <option value="gjenstaende ASC">Gjenstående stigende</option>
@@ -289,7 +317,15 @@
     var bottom = false;
     var scrolledTimeOut;
     const webadress = "toastmaster@estheremilieoghakon.no";
+    
+    pagesEl.forEach(pageEventListener => {
+        pageEventListener.addEventListener("click", () => {
+            if (navEl.classList.contains("opened")) {
+                openNav(false);
+            }
 
+        });
+    });
     $("#showZeroRemaining").on("change", giftList);
     $("#sortGiftList").on("change", giftList);
 
@@ -314,12 +350,15 @@
     function setColor() {
         var infoEl = document.querySelectorAll(".info");
         for (var i = 0; i < infoEl.length; i++) {
-            if (page - 1 == i) {
-                infoEl[i].style.color = "rgb(248, 227, 42";
-            } else if (window.innerWidth > 1279)
-                infoEl[i].style.color = "white";
-            else
+
+            if (window.innerWidth <= 1279) {
                 infoEl[i].style.color = "black";
+            } else {
+                infoEl[i].style.color = "white";
+            }
+            if (page - 1 == i) {
+                infoEl[i].style.color = "rgb(248, 227, 42)";
+            }
         }
     }
 
@@ -413,17 +452,16 @@
                 if (data == '1') {
                     setTimeout(() => {
                         popupEl.style.display = "block";
-                        popupEl.innerHTML = "<h1>Takk for at du deltar</h1>";
+                        popupEl.innerHTML = "<h2>Takk for at du deltar</h2>";
                         setTimeout(() => {
                             popupEl.style.display = "none";
                         }, 8000);
                     }, 200);
-                }
-                else {
+                } else {
                     setTimeout(() => {
                         popupEl.style.display = "block";
-                        popupEl.innerHTML = "<h1>Det skjedde en feil. Ta kontakt på" + webadress +
-                            "</h1>";
+                        popupEl.innerHTML = "<h2>Det skjedde en feil. Ta kontakt på" + webadress +
+                            "</h2>";
                         setTimeout(() => {
                             popupEl.style.display = "none";
                         }, 8000);
@@ -433,13 +471,13 @@
             },
             error: function(data) {
                 setTimeout(() => {
-                        popupEl.style.display = "block";
-                        popupEl.innerHTML = "<h1>Det skjedde en feil. Ta kontakt på" + webadress +
-                            "</h1>";
-                        setTimeout(() => {
-                            popupEl.style.display = "none";
-                        }, 8000);
-                    }, 200);
+                    popupEl.style.display = "block";
+                    popupEl.innerHTML = "<h2>Det skjedde en feil. Ta kontakt på" + webadress +
+                        "</h2>";
+                    setTimeout(() => {
+                        popupEl.style.display = "none";
+                    }, 8000);
+                }, 200);
             }
         });
         return false;
@@ -461,8 +499,8 @@
             setTimeout(() => {
                 giftList();
                 popupEl.style.display = "block";
-                popupEl.innerHTML = "<h1>Du har nå registrert at du har kjøpt " + bought + " stk " + nameEl
-                    .innerHTML.toLowerCase() + ".<br>Takk for gaven</h1>";
+                popupEl.innerHTML = "<h2>Du har nå registrert at du har kjøpt " + bought + " stk " + nameEl
+                    .innerHTML.toLowerCase() + ".<br>Takk for gaven</h2>";
                 setTimeout(() => {
                     popupEl.style.display = "none";
                 }, 8000);

@@ -5,15 +5,17 @@
     overflow: auto;
     width: 50vw;
     padding: 4vh;
-    background-color: whitesmoke;
-    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-    -moz-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    background-color: white;
+    -webkit-box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1);
+    -moz-box-shadow:0 15px 30px -10px rgba(0,0,0,0.1);
+    box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1);
     box-sizing: border-box;
     font-size: large;
     display: table;
-    padding-top:90px; 
-    
+    padding-top:90px
+}
+#registration, #toastmaster {
+    padding-top:15vh; 
 }
 .iframeMap{
     min-height: 250px;
@@ -21,20 +23,25 @@
     min-width: 100%;
     
 }
-
+@media only screen and (max-width: 1500px) {
+ 
+    .container{
+        padding-top:90px !important; 
+        font-size: medium
+    }
+}
 @media only screen and (max-width: 1279px) {
     .container{
         top:0;
-        
-        font-size: medium;
+        padding-top: 5vh !important;
     }
 }
 @media only screen and (max-width: 800px) {
     .container{
         width: 100%;
         margin: 0;
-        padding-top:60px;
-        font-size: small;
+        /* padding-top:60px; */
+        /* font-size: small; */
       
     }
     .pageimg {
@@ -46,7 +53,7 @@
     }
 
 }
-@media only screen and (max-width: 500px) {
+/* @media only screen and (max-width: 500px) {
     .container{
         font-size: smaller;
     }
@@ -56,4 +63,4 @@
     .container{
         font-size: x-small;
     }
-}
+} */

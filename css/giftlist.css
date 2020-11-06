@@ -22,10 +22,9 @@ input::-webkit-inner-spin-button {
     transform: translate(-50%,-50%);
     background-color: khaki;
     z-index: 10;
-    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-    -moz-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-    border: 1px solid rgba(0,0,0,0.1);
+    -webkit-box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1);
+    -moz-box-shadow:0 15px 30px -10px rgba(0,0,0,0.1);
+    box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1);
     padding: 2%;
 }
 #giftlistContainer{
@@ -48,9 +47,17 @@ input::-webkit-inner-spin-button {
     cursor: pointer;
     color: #1a0dab;
     text-decoration: underline;
+    border-radius: 0;
     
 }
+#sortGiftList {
+    height: 2em;
+    border: none;
+    -webkit-box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1);
+    -moz-box-shadow:0 15px 30px -10px rgba(0,0,0,0.1);
+    box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1);
 
+}
 .giftlistImg {
     height: 70px;
     margin: 0;

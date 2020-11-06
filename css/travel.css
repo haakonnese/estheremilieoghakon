@@ -1,0 +1,29 @@
+#travel{
+    width: 100%;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+#travel p {
+    margin-top: 0.2em;
+}
+#travel h3, #travel h2 {
+    margin-bottom: 0.2em;
+}
+@media only screen and (max-width:1279px) {
+    #travel {
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+}
+@media only screen and (max-width:800px) {
+    #travel {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+@media only screen and (max-width:500px) {
+    #travel {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}

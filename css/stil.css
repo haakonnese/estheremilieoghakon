@@ -10,15 +10,16 @@ ul {
 li{
     float: left;
 }
-a{
+.a{
     display: block;
     text-decoration: none;
     color: whitesmoke;
-    size: 10%;
+    
     padding: 30px;
     font-size: larger;
     cursor: pointer;
 }
+
 i{
     cursor: pointer;
 }
@@ -116,7 +117,7 @@ i{
     font-size: larger;
     z-index: 2;  
 }
-#marry > h1, #marry > h2 {
+#marry > h1, #marry > h2,  #marry > h3 ,  #marry > h4  {
     text-shadow: -4px 4px 8px #515151;
 }
 
@@ -139,12 +140,12 @@ i{
 #form{
     position: relative;
     top:20%;
-    display: table-row;
+    display: block;
     left:0;  
 } 
 
 @media only screen and (max-width: 1279px) {
-    li a{
+    li .a{
         display: none;
     }
     #nav li{
@@ -159,19 +160,27 @@ i{
  
     #nav .info{
         display: inline-block;
-        padding: 5%;
-        color: black;
+        padding: 3vh;
         text-align: center;   
     }
     
     #nav {
         overflow-y: scroll;
         height: 100%;
-        background-color: whitesmoke;
+        background-color: white;
         opacity: 100%;
         
         position: fixed;
         z-index: 2;
+    }
+    .closed .info {
+        padding: 6vh !important;
+        transition: padding 1s ease;
+        
+    }
+    .opened .info {
+        padding: 3vh !important;
+        transition: padding 1s ease;
     }
     .closed{
         right: -100%;
@@ -184,7 +193,7 @@ i{
         transition: 1s ease;
     }
     .opened .hamClass{
-        background-color: whitesmoke;
+        background-color: white;
         color: black;
         opacity: 100%;
     }
@@ -203,7 +212,7 @@ i{
         margin-top: 20px;
         font-size: medium;
     }
-    h1,h2{
+    h1,h2,h3,h4{
         margin-top: 5px;
         padding-top: 5px;
         margin-bottom: 5px;
@@ -212,7 +221,7 @@ i{
     .info:hover{
         background-color:black;
         opacity: 50%;
-        color: whitesmoke !important;
+        color: whitesmoke !important;        
     }
     
  
@@ -223,10 +232,7 @@ i{
         margin-top: 0px;
         font-size: medium;
     }
-    h1,h2{
-        margin: 5px;
-        padding: 5px;
-    }
+
 
     .opened{
         width: 80%;
@@ -244,9 +250,9 @@ i{
     
     #marry{
     
-        font-size: smaller;
+        font-size: 15px;
     }
-    h1,h2{
+    h1,h2,h3,h4{
         margin: 0px;
         padding: 0px;
     }
@@ -262,7 +268,7 @@ i{
 
 }
 @media only screen and (max-width: 350px) {
-    #marry {
+    /* #marry {
         font-size: x-small;
-    }
+    } */
 }

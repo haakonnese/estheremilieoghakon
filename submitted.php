@@ -40,7 +40,7 @@ else{
     }  
     mysqli_close($conn);
 }
-if(!mail($to,$subject, $_POST["allergier"])) {
-    echo '0';
+if(!mail($to,$subject, $_POST["allergier"], "From: 'Registrering bryllup EEH' <registrering@eshteremilieoghakon.no>")) {
+    echo error_get_last()['message'];
 }
 ?>

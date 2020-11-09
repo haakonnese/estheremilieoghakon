@@ -5,7 +5,7 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <title>EE&#38;H 26.06.2021</title>
     <script src="jquery-3.5.1.min.js"></script>
-
+    <link href="background-images/logo.png" rel="icon" type="image/png">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/site-specific.css">
     <link rel="stylesheet" type="text/css" href="css/stil.css">
@@ -16,17 +16,17 @@
 <body>
     <div id="nav" class="closed scrolled">
         <ul>
-            <li><a class="info" onclick="scrollToPage(1)">EE&#38;H</a></li>
-            <li><a class="info" onclick="scrollToPage(2)">Vielse</a></li>
-            <li><a class="info" onclick="scrollToPage(3)">Fest</a></li>
-            <li><a class="info" onclick="scrollToPage(4)">Registrer</a></li>
-            <li><a class="info" onclick="scrollToPage(5)">Toastmaster</a></li>
-            <li><a class="info" onclick="scrollToPage(6)">Reise og overnatting</a></li>
-            <li><a class="info" onclick="scrollToPage(7)">Gaveliste</a></li>
+            <li><a class="info a" onclick="scrollToPage(1)">EE&#38;H</a></li>
+            <li><a class="info a" onclick="scrollToPage(2)">Vielse</a></li>
+            <li><a class="info a" onclick="scrollToPage(3)">Fest</a></li>
+            <li><a class="info a" onclick="scrollToPage(4)">Registrer</a></li>
+            <li><a class="info a" onclick="scrollToPage(5)">Toastmaster</a></li>
+            <li><a class="info a" onclick="scrollToPage(6)">Reise og overnatting</a></li>
+            <li><a class="info a" onclick="scrollToPage(7)">Gaveliste</a></li>
 
 
         </ul>
-        <a id="ham" class="hamClass" onclick="openNav(false)"><i class="material-icons">menu</i></a>
+        <a id="ham" class="hamClass a" onclick="openNav(false)"><i class="material-icons">menu</i></a>
     </div>
     <div id="picture">
         <?php

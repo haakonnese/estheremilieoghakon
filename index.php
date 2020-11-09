@@ -108,7 +108,7 @@
                     </div>
 
                     <div>
-                        <input type="submit" name="submit" value="Send">
+                        <input type="submit" name="submit" id="registrationButton" value="Send">
                     </div>
                 </form>
             </div>
@@ -147,7 +147,7 @@
                 </div>
             </div>
             <button id="toastmaster-contact-button" onclick="setContactForm(true)">Kontakt oss</button>
-            
+
             <div id="overlay"></div>
             <div id="toastmaster-contact-form">
                 <h2>Send inn her om du skal gjøre noe</h2>
@@ -174,13 +174,13 @@
                         <label class="infoLabel">Antall minutt</label>
                     </div>
 
-                    <div>
-                        <input type="submit" name="submit" value="Send">
+                    <div id="submitDivToastmaster">
+                        <input type="submit" name="submit" class="makeButtonSpin" id="toastmasterSpin" value="Send">
                     </div>
                 </form>
-                <div class="popup" id="popupToastmaster"></div>
             </div>
-
+            <div class="popup" id="popupToastmaster"></div>
+            
         </div>
 
     </div>
@@ -210,7 +210,8 @@
                 prisen noe redusert.
             </p>
             <h3>Bestill rom</h3>
-            <p style="margin-bottom: 0px">Send mail til <a href="mailto: skoghus@nlm.no">skoghus@nlm.no</a> med emne: EEH, overnatting, "Ditt eget
+            <p style="margin-bottom: 0px">Send mail til <a href="mailto: skoghus@nlm.no">skoghus@nlm.no</a> med emne:
+                EEH, overnatting, "Ditt eget
                 navn".<br><br>
                 Andre mulige overnattingsplasser er Finnsnes hotell, Senja Gaard, Soltun Soldatheim (en time å kjøre)
                 med flere.
@@ -303,7 +304,7 @@
         }, 1000);
     }
     var page = 1;
-    const PERCENTAGE = 0.15;
+    const PERCENTAGE = 0.1;
     var positionY = 0;
     var deltaYvar = 0;
     var scrolled = false;
@@ -317,7 +318,7 @@
     var bottom = false;
     var scrolledTimeOut;
     const webadress = "toastmaster@estheremilieoghakon.no";
-    
+
     pagesEl.forEach(pageEventListener => {
         pageEventListener.addEventListener("click", () => {
             if (navEl.classList.contains("opened")) {
@@ -406,13 +407,16 @@
         var phoneNumber = document.querySelector('input[name="phoneNumber"]').value;
         var allergier = document.querySelector('input[name="allergier"]').value;
         var rsvp = document.querySelector('input[name="rsvp"]:checked').value;
+        const spinEl = document.getElementById("registrationButton");
 
+        spinEl.classList.add("loading");
         $.ajax({
             type: "post",
             url: "submitted",
             data: "name=" + name + "&phoneNumber=" + phoneNumber + "&allergier=" + allergier + "&rsvp=" + rsvp,
+
             success: function(data) {
-                console.log(data);
+                spinEl.classList.remove("loading");
                 if (data == '1') {
                     document.getElementById("form").style.display = "none";
                     document.getElementById("submitted-form").style.display = "block";
@@ -422,6 +426,7 @@
                 }
             },
             error: function(data) {
+                spinEl.classList.remove("loading");
                 document.getElementById("form").style.display = "none";
                 document.getElementById("usubmitted-form").style.display = "block";
             }
@@ -442,19 +447,26 @@
         var what = document.querySelector('input[name="whatToast"]').value;
         var minutes = document.querySelector('input[name="minutesToast"]').value;
         var popupEl = document.getElementById("popupToastmaster");
+        const spinEl = document.getElementById("toastmasterSpin");
+        const divPaddingEl = document.getElementById("submitDivToastmaster");
+        spinEl.classList.add("loading");
+        divPaddingEl.classList.add("paddingLoading");
         $.ajax({
             type: "post",
             url: "submittedToastmaster",
             data: "name=" + name + "&email=" + email + "&what=" + what + "&relationship=" + relationship +
                 "&minutes=" + minutes,
             success: function(data) {
-                console.log(data);
+                divPaddingEl.classList.remove("paddingLoading");
+                spinEl.classList.remove("loading");
                 if (data == '1') {
                     setTimeout(() => {
-                        popupEl.style.display = "block";
+                        popupEl.style.display = "block ";
                         popupEl.innerHTML = "<h2>Takk for at du deltar</h2>";
+                        setContactForm(false);
+                        document.getElementById("contact-form-toastmaster").reset();
                         setTimeout(() => {
-                            popupEl.style.display = "none";
+                            popupEl.style.display = "none ";
                         }, 8000);
                     }, 200);
                 } else {
@@ -470,6 +482,8 @@
 
             },
             error: function(data) {
+                divPaddingEl.classList.remove("paddingLoading");
+                spinEl.classList.remove("loading");
                 setTimeout(() => {
                     popupEl.style.display = "block";
                     popupEl.innerHTML = "<h2>Det skjedde en feil. Ta kontakt på" + webadress +
@@ -558,13 +572,14 @@
 
     function checkScroll() {
         var e = document.getElementById("page" + page.toString());
-        if ((e.scrollHeight - e.scrollTop != e.clientHeight) && deltaYvar < 0) {
+        console.log(e.scrollHeight +" " + e.scrollTop +" "+ e.clientHeight);
+        if ((Math.abs(e.scrollHeight - e.scrollTop - e.clientHeight)>3.0) && deltaYvar < 0) {
             scrolled = true;
             scrolledTimeOut = setTimeout(() => {
                 scrolled = false;
             }, 500);
             return false;
-        } else if (e.scrollTop != 0 && deltaYvar > 0) {
+        } else if (Math.abs(e.scrollTop)>3.0 && deltaYvar > 0) {
             scrolled = true;
             scrolledTimeOut = setTimeout(() => {
                 scrolled = false;
@@ -577,11 +592,11 @@
     function topBottom() {
         var e = document.getElementById("page" + page.toString());
 
-        if (e.scrollHeight - e.scrollTop == e.clientHeight)
+        if (Math.abs(e.scrollHeight - e.scrollTop - e.clientHeight) <= 3.0)
             bottom = true;
         else
             bottom = false;
-        if (e.scrollTop == 0)
+        if (Math.abs(e.scrollTop)<=3.0)
             topp = true;
         else
             topp = false;
@@ -634,6 +649,8 @@
 
     function touchStart(e) {
         positionY = e.touches[0].clientY;
+        var el = document.getElementById("page" + page.toString());
+        console.log(el.scrollTop);
         topBottom();
     }
 

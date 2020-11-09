@@ -1,5 +1,13 @@
 
-
+  
+  @keyframes rotateAnimation {
+      0%   {transform: rotate(0deg);}
+      100% {transform: rotate(360deg);}
+  }
+  @-webkit-keyframes wk-rotateAnimation {
+      0%   {-webkit-transform: rotate(0deg);}
+      100% {-webkit-transform: rotate(360deg);}
+  }
 .radioButton{
     display: block;
 }
@@ -16,9 +24,15 @@ form input[type="submit"],
     box-shadow: none;
     outline: none;
     border: none;
-    border-bottom: 2px solid #999;
+    
     font-size: larger;
     
+}
+form input[type="text"], 
+form input[type="number"],
+form input[type="email"],
+form textarea {
+    border-bottom: 2px solid #999;
 }
 form input[type="text"], 
 form input[type="number"],
@@ -28,18 +42,7 @@ form textarea{
     background-color: inherit;
 }
 
-form input[type="submit"], #sendNew,.giftlistRegistrerButton{
-    border: 1px solid rgba(0,0,0,0.1) !important;
-    -webkit-box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1) !important;
-    -moz-box-shadow:0 15px 30px -10px rgba(0,0,0,0.1) !important;
-    box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1) !important;
-    cursor: pointer;
-    transition: 0.2s ease;
-    height: 3.5em;
-    align-self: center;
-    background-color: rgba(0, 0, 0, 0.822);
-    color: whitesmoke;
-}
+
 form input[type="submit"]:hover, #sendNew:hover, .giftlistRegistrerButton:hover{
     background-color: black;
     transform: scale(1.01);
@@ -82,7 +85,7 @@ form textarea:focus,
 form input[type="number"]:required:valid,
 form input[type="email"]:required:valid,
 form input[type="tel"]:required:valid,
-form input:not(:required):not(:placeholder-shown),
+form input[type="text"]:not(:required):not(:placeholder-shown),
 form textarea:valid{
     border-bottom: 2px solid black;
 }
@@ -97,11 +100,52 @@ form input::placeholder{
     margin-left: 0.2em;
  
 }
+form input[type="submit"] , #sendNew,.giftlistRegistrerButton{
+    -webkit-box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1) !important;
+    -moz-box-shadow:0 15px 30px -10px rgba(0,0,0,0.1) !important;
+    box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1) !important;
+    cursor: pointer;
+    transition: 0.2s ease;
+    height: 3.5em;
+    align-self: center;
+    background-color: rgba(0, 0, 0, 0.822);
+    color: whitesmoke;
+}
+form input[type="submit"], #sendNew,.giftlistRegistrerButton{
+    border: 1px solid rgba(0,0,0,0.1);
+}
 
 /* #form> h1, #form h2 {
     margin: 0px;
     padding: 0px;
 } */
+
+.loading{
+    font-size:0 !important ;
+    width:30px !important;
+    height:30px !important;
+    margin-top:5px ;
+    border-radius:15px;
+    padding:0 !important;
+    border:3px solid #000000 !important;
+    border-bottom:3px solid rgba(0, 0, 0, 0) !important;
+    border-left:3px solid rgba(0, 0, 0, 0) !important;
+    background-color:transparent !important;
+    animation-name: rotateAnimation ;
+    -webkit-animation-name: wk-rotateAnimation;
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    animation-delay: 0.2s;
+    -webkit-animation-delay: 0.2s;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    margin-left: calc(50% - 15px);
+    margin-left: -moz-calc(50% - 15px);
+    margin-left: -webkit-calc(50%-15px);
+  }
+  .paddingLoading {
+      margin-bottom: 2.5em;
+  }
 @media only screen and (max-width: 1279px) {
 
 }

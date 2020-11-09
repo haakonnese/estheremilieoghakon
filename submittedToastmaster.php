@@ -42,7 +42,7 @@ else{
     }  
     mysqli_close($conn);
 
-if(!mail($to,$subject, $message)) {
+if(!mail($to,$subject, $message, "From: 'Toastmaster bryllup EEH' <toastmaster@eshteremilieoghakon.no>")) {
     echo '0';
 }
 ?>

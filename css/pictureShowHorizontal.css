@@ -49,11 +49,10 @@
 #slideshow>img{
 	position: absolute;
 	object-fit: contain;
-	min-height:100vh;
-	max-height: 100vh;
+	height: 100vh;
+	width: 100vw;
 	display:none;
-	left: 50%;
-	transform: translateX(-50%);
+	
 }
 #slideshow>i{
 	position: fixed;

@@ -6,10 +6,10 @@
     padding-bottom: 1px;
 }
 
-#toastmaster>*{
+/* #toastmaster>*:not(.popup){
     position: relative;
     display: block;  
-}
+} */
 
 #toastmaster> h2{
     text-align: center;
@@ -124,7 +124,7 @@
     padding-left: 5%;
     padding-right: 5%;
     padding-top: 2vh;
-    display: none !important;
+    display: none;
     position: absolute;
     margin-bottom: 2vh;
     z-index: 5; 

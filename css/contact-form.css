@@ -146,7 +146,9 @@ form input[type="submit"], #sendNew,.giftlistRegistrerButton{
   .paddingLoading {
       margin-bottom: 2.5em;
   }
-@media only screen and (max-width: 1279px) {
-
+@media only screen and (max-width: 500px) {
+    #contact-form {
+        padding-top: 8px;
+    }
 }
 

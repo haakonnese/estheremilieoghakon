@@ -3,7 +3,7 @@
     width: 100%;
     padding-left:5%;
     padding-right: 5%;
-    padding-bottom: 1px;
+    padding-bottom: 15px;
 }
 
 /* #toastmaster>*:not(.popup){
@@ -123,10 +123,10 @@
     top: 100px;
     padding-left: 5%;
     padding-right: 5%;
-    padding-top: 2vh;
+    padding-top: 2vw;
     display: none;
     position: absolute;
-    margin-bottom: 2vh;
+    margin-bottom: 2vw;
     z-index: 5; 
     
 }

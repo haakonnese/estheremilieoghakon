@@ -180,7 +180,7 @@
                 </form>
             </div>
             <div class="popup" id="popupToastmaster"></div>
-            
+
         </div>
 
     </div>
@@ -318,7 +318,12 @@
     var bottom = false;
     var scrolledTimeOut;
     const webadress = "toastmaster@estheremilieoghakon.no";
-
+    var scrollTime = 0.5;
+    var scrollingDelay = 200;
+    if (window.innerWidth>1279 ) {
+        scrollTime = 0.8;
+        var scrollingDelay = 500;
+    }
     pagesEl.forEach(pageEventListener => {
         pageEventListener.addEventListener("click", () => {
             if (navEl.classList.contains("opened")) {
@@ -336,7 +341,6 @@
         giftList();
         for (var i = 0; i < pagesEl.length; i++) {
             pagesEl[i].style.top = (i - page + 1) * 100 + "%";
-            pagesEl[i].style.transition = "1s ease";
         }
         const rows = document.querySelectorAll("td[data-href]");
         rows.forEach(row => {
@@ -472,11 +476,14 @@
                 } else {
                     setTimeout(() => {
                         popupEl.style.display = "block";
-                        popupEl.innerHTML = "<h2>Det skjedde en feil. Ta kontakt på" + webadress +
-                            "</h2>";
-                        setTimeout(() => {
-                            popupEl.style.display = "none";
-                        }, 8000);
+                        setContactForm(false);
+                        document.getElementById("contact-form-toastmaster").reset();
+                        popupEl.innerHTML =
+                            "<p>Det skjedde en feil. Ta kontakt på <a href='mailto: skoghus@nlm.no'>" +
+                            webadress + "</a>" +
+                            "</p>";
+                        document.getElementById("toastmaster-contact-button").style.display =
+                            "none";
                     }, 200);
                 }
 
@@ -486,11 +493,14 @@
                 spinEl.classList.remove("loading");
                 setTimeout(() => {
                     popupEl.style.display = "block";
-                    popupEl.innerHTML = "<h2>Det skjedde en feil. Ta kontakt på" + webadress +
-                        "</h2>";
-                    setTimeout(() => {
-                        popupEl.style.display = "none";
-                    }, 8000);
+                    setContactForm(false);
+                    document.getElementById("contact-form-toastmaster").reset();
+                    popupEl.innerHTML =
+                        "<p>Det skjedde en feil. Ta kontakt på <a href='mailto: skoghus@nlm.no'>" +
+                        webadress + "</a>" +
+                        "</p>";
+                    document.getElementById("toastmaster-contact-button").style.display = "none";
+
                 }, 200);
             }
         });
@@ -509,16 +519,44 @@
                 type: "post",
                 url: "updateGiftList",
                 data: "id=" + id + "&bought=" + bought,
+                success: function(data) {
+                    if (data == "1") {
+                        setTimeout(() => {
+                            giftList();
+                            popupEl.style.display = "block";
+                            popupEl.innerHTML = "<p>Du har nå registrert at du har kjøpt " +
+                                bought +
+                                " stk " + nameEl
+                                .innerHTML.toLowerCase() + ". Takk for gaven</p>";
+                            setTimeout(() => {
+                                popupEl.style.display = "none";
+                            }, 15000);
+                        }, 200);
+                    } else {
+                        setTimeout(() => {
+                        giftList();
+                        popupEl.style.display = "block";
+                        popupEl.innerHTML =
+                            "<p>Det skjedde en feil. Prøv igjen og kontakt 48075305 dersom feilen gjentar seg</p>";
+                        setTimeout(() => {
+                            popupEl.style.display = "none";
+                        }, 15000);
+                    }, 200);
+                    }
+                },
+                error: function(data) {
+                    setTimeout(() => {
+                        giftList();
+                        popupEl.style.display = "block";
+                        popupEl.innerHTML =
+                            "<p>Det skjedde en feil. Prøv igjen og kontakt 48075305 dersom feilen gjentar seg</p>";
+                        setTimeout(() => {
+                            popupEl.style.display = "none";
+                        }, 15000);
+                    }, 200);
+                }
             })
-            setTimeout(() => {
-                giftList();
-                popupEl.style.display = "block";
-                popupEl.innerHTML = "<h2>Du har nå registrert at du har kjøpt " + bought + " stk " + nameEl
-                    .innerHTML.toLowerCase() + ".<br>Takk for gaven</h2>";
-                setTimeout(() => {
-                    popupEl.style.display = "none";
-                }, 8000);
-            }, 200);
+
         }
     }
 
@@ -526,12 +564,18 @@
         setColor();
         WINDOWHEIGHT = window.innerHeight;
         if (window.innerWidth > 1279) {
+            scrollTime = 0.8;
+            scrollingDelay = 500;
             var iconEl = document.querySelector("#nav");
             if (iconEl.classList.contains("opened")) {
                 iconEl.classList.add("closed");
                 iconEl.classList.remove("opened");
                 document.querySelector(".material-icons").innerHTML = "menu";
             }
+        }
+        else {
+            scrollTime = 0.5;
+            scrollingDelay = 200;
         }
     });
 
@@ -572,18 +616,18 @@
 
     function checkScroll() {
         var e = document.getElementById("page" + page.toString());
-        console.log(e.scrollHeight +" " + e.scrollTop +" "+ e.clientHeight);
-        if ((Math.abs(e.scrollHeight - e.scrollTop - e.clientHeight)>3.0) && deltaYvar < 0) {
+        console.log(e.scrollHeight + " " + e.scrollTop + " " + e.clientHeight);
+        if ((Math.abs(e.scrollHeight - e.scrollTop - e.clientHeight) > 3.0) && deltaYvar < 0) {
             scrolled = true;
             scrolledTimeOut = setTimeout(() => {
                 scrolled = false;
-            }, 500);
+            }, scrollingDelay);
             return false;
-        } else if (Math.abs(e.scrollTop)>3.0 && deltaYvar > 0) {
+        } else if (Math.abs(e.scrollTop) > 3.0 && deltaYvar > 0) {
             scrolled = true;
             scrolledTimeOut = setTimeout(() => {
                 scrolled = false;
-            }, 500);
+            }, scrollingDelay);
             return false;
         }
         return true;
@@ -596,7 +640,7 @@
             bottom = true;
         else
             bottom = false;
-        if (Math.abs(e.scrollTop)<=3.0)
+        if (Math.abs(e.scrollTop) <= 3.0)
             topp = true;
         else
             topp = false;
@@ -627,7 +671,7 @@
 
     function scrollElement() {
         for (var i = 0; i < pagesEl.length; i++) {
-            pagesEl[i].style.transition = "1s ease";
+            pagesEl[i].style.transition = scrollTime +"s ease";
             pagesEl[i].style.top = ((i + 1) - page) * 100 + "%";
         }
         setColor();

@@ -12,7 +12,16 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" type="text/css" href="css/pictureShowHorizontal.css">
 </head>
-
+<style>
+    .info{
+        color: whitesmoke;
+    }
+    @media only screen and (max-width: 1279px) {
+        .info{
+            color: black;
+        }
+    }
+</style>
 <body>
     <div id="nav" class="closed scrolled">
         <ul>
@@ -114,50 +123,6 @@
     document.getElementById("pausePlay").addEventListener("click", pausePlay);
     var scrollHeight = 0;
 
-    // function calcHeight() {
-    //     var picturesEl = document.querySelectorAll(".item");
-    //     var cols = 1;
-    //     if (window.innerWidth > 1800)
-    //         cols = 5;
-    //     else if (window.innerWidth > 1279)
-    //         cols = 4;
-    //     else if (window.innerWidth > 800)
-    //         cols = 3;
-    //     else if (window.innerWidth > 500)
-    //         cols = 2;
-    //     var columnsEl = document.querySelectorAll(".column");
-    //     for (var i = picturesEl.length - 1; i >= 0; i--) {
-    //         var number = (picturesEl.length - i - 1) % cols;
-
-    //         columnsEl[number].appendChild(document.getElementById("item" + (i + 1)));
-    //     }
-    //     while (true) {
-    //         var minCol = 0;
-    //         var maxCol = 0;
-    //         var minHeight = Infinity;
-    //         var maxHeight = 0;
-    //         for (var i = 0; i < cols; i++) {
-    //             var height = 0;
-    //             for (var x = 0; x < columnsEl[i].children.length; x++)
-    //                 height += columnsEl[i].children[x].clientHeight;
-
-    //             if (height > maxHeight) {
-    //                 maxHeight = height;
-    //                 maxCol = i;
-    //             }
-    //             if (height < minHeight) {
-    //                 minHeight = height;
-    //                 minCol = i;
-    //             }
-    //         }
-    //         if (maxHeight - minHeight > 1.3 * document.getElementById("column" + maxCol).lastChild.clientHeight) {
-    //             document.getElementById("column" + minCol).appendChild(document.getElementById("column" + maxCol)
-    //                 .lastChild);
-    //             continue;
-    //         }
-    //         break;
-    //     }
-    // }
     var closeTimeout;
     document.getElementById("closeSlideshow").style.transition = "0.5s ease";
 

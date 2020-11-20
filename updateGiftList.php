@@ -25,7 +25,7 @@
                 echo "Det skjedde en feil";
             }
             else 
-                echo 1;
+                echo "1";
         }
         
     }

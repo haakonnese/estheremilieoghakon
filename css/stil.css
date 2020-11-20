@@ -124,18 +124,18 @@ i{
 .closed{
     width: 100%;
     background-color: transparent;
-    transition: 1s;
+    transition: 0.5s;
 }
 .scrolled.closed{
     background-color: black;
-    transition: 1s;
+    transition: 0.5s;
 }
 .hamClass{
-    transition: 1s;
+    transition: 0.5s;
 }
 .scrolled .hamClass{
     background-color: black;
-    transition: 1s;
+    transition: 0.5s;
 }
 #form{
     position: relative;
@@ -175,22 +175,22 @@ i{
     }
     .closed .info {
         padding: 6vh !important;
-        transition: padding 1s ease;
+        transition: padding 0.5s ease;
         
     }
     .opened .info {
         padding: 3vh !important;
-        transition: padding 1s ease;
+        transition: padding 0.5s ease;
     }
     .closed{
         right: -100%;
-        transition: 1s ease;
+        transition: 0.5s ease;
     }
     .opened{
         width: 50%;
         box-shadow: -6px 0px 6px 0px rgba(0,0,0,0.62);
         right:0;
-        transition: 1s ease;
+        transition: 0.5s ease;
     }
     .opened .hamClass{
         background-color: white;

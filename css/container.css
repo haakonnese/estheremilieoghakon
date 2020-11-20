@@ -33,13 +33,14 @@
 @media only screen and (max-width: 1279px) {
     .container{
         top:0;
-        padding-top: 5vh !important;
+        padding-top: 60px !important;
     }
 }
 @media only screen and (max-width: 800px) {
     .container{
         width: 100%;
         margin: 0;
+        padding: 4vw;
         /* padding-top:60px; */
         /* font-size: small; */
       
@@ -53,12 +54,13 @@
     }
 
 }
-/* @media only screen and (max-width: 500px) {
+ @media only screen and (max-width: 500px) {
     .container{
-        font-size: smaller;
+        padding-top: 45px !important;
     }
 
 }
+/*
 @media only screen and (max-width: 350px) {
     .container{
         font-size: x-small;

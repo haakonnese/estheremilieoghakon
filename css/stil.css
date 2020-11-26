@@ -7,6 +7,47 @@ ul {
     margin: 0;
     padding: 0;  
 }
+#arrow {
+    border: solid whitesmoke;
+    border-width: 0 5px 5px 0;
+    display: inline-block;
+    padding: 1.5em;
+    transform: translateX(-50%) rotate(45deg);
+    position: absolute;
+    z-index: 5;
+    bottom: 1.5em;
+    animation: MoveUpDown 1.5s ease 15s infinite;
+    transition: 0.2s;
+}
+#arrow:hover {
+    transform: translateY(-0.5em) translateX(-50%) rotate(45deg);
+    transition: 0.2s;
+    animation-play-state: paused;
+}
+
+@keyframes MoveUpDown {
+    0%, 20%, 50%, 80%,100% {
+        bottom: 1.5em;
+    }
+    40% {
+        bottom: 2.2em;
+    }
+    60% {
+        bottom: 1.8em;
+    }
+  
+}
+@-webkit-keyframes MoveUpDown {
+    0%, 20%, 50%, 80%,100% {
+        bottom: 1.5em;
+    }
+    40% {
+        bottom: 2.2em;
+    }
+    60% {
+        bottom: 1.8em;
+    }
+}
 li{
     float: left;
 }
@@ -37,7 +78,7 @@ i{
 #countDown {
     width: 70%;
     position: absolute;
-    bottom: 2em;
+    bottom: 5em;
     left: 50%;
     transform: translate(-50%);
 }

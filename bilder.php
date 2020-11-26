@@ -7,10 +7,10 @@
     <script src="jquery-3.5.1.min.js"></script>
     <link href="background-images/logo.png" rel="icon" type="image/png">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/site-specific.css">
-    <link rel="stylesheet" type="text/css" href="css/stil.css">
+    <link rel="stylesheet" type="text/css" href="css/site-specific.css?ver=1">
+    <link rel="stylesheet" type="text/css" href="css/stil.css?ver=1">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" type="text/css" href="css/pictureShowHorizontal.css">
+    <link rel="stylesheet" type="text/css" href="css/pictureShowHorizontal.css?ver=1">
 </head>
 <style>
     .info{
@@ -173,6 +173,7 @@
         document.getElementById("slideshowimg" + number).classList.add("activeImg");
         document.getElementById("picture").style.display = "none";
         showClose();
+        document.body.requestFullscreen();
 
     }
     var slide;
@@ -203,6 +204,7 @@
 
     function close(e) {
         if (e.target == this) {
+            document.exitFullscreen();
             clearTimeout(slide);
             clearTimeout(closeTimeout);
             document.querySelector("body").style.cursor = "auto";

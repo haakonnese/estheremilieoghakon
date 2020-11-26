@@ -7,14 +7,14 @@
     <script src="jquery-3.5.1.min.js"></script>
     <link href="background-images/logo.png" rel="icon" type="image/png">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/site-specific.css">
-    <link rel="stylesheet" type="text/css" href="css/stil.css">
-    <link rel="stylesheet" type="text/css" href="css/contact-form.css">
-    <link rel="stylesheet" type="text/css" href="css/container.css">
-    <link rel="stylesheet" type="text/css" href="css/ceremony.css">
-    <link rel="stylesheet" type="text/css" href="css/toastmaster.css">
-    <link rel="stylesheet" type="text/css" href="css/giftlist.css">
-    <link rel="stylesheet" type="text/css" href="css/travel.css">
+    <link rel="stylesheet" type="text/css" href="css/site-specific.css?ver=1">
+    <link rel="stylesheet" type="text/css" href="css/stil.css?ver=1">
+    <link rel="stylesheet" type="text/css" href="css/contact-form.css?ver=1">
+    <link rel="stylesheet" type="text/css" href="css/container.css?ver=1">
+    <link rel="stylesheet" type="text/css" href="css/ceremony.css?ver=1">
+    <link rel="stylesheet" type="text/css" href="css/toastmaster.css?ver=1">
+    <link rel="stylesheet" type="text/css" href="css/giftlist.css?ver=1">
+    <link rel="stylesheet" type="text/css" href="css/travel.css?ver=1">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
@@ -41,6 +41,7 @@
             <h2>Esther-Emilie & Håkon</h2>
             <h3>26.06.2021</h3>
             <h3 id="countDown"></h3>
+            <i id ="arrow"></i>
         </div>
     </div>
 
@@ -334,7 +335,10 @@
     });
     $("#showZeroRemaining").on("change", giftList);
     $("#sortGiftList").on("change", giftList);
-
+    $('#arrow').on("click", () => {
+       scrollToPage(2);
+       document.getElementById("arrow").style.animation = "none"; 
+    });
     function setTop() {
         countDown();
         setColor();
@@ -619,12 +623,14 @@
         console.log(e.scrollHeight + " " + e.scrollTop + " " + e.clientHeight);
         if ((Math.abs(e.scrollHeight - e.scrollTop - e.clientHeight) > 3.0) && deltaYvar < 0) {
             scrolled = true;
+            clearTimeout(scrolledTimeOut);
             scrolledTimeOut = setTimeout(() => {
                 scrolled = false;
             }, scrollingDelay);
             return false;
         } else if (Math.abs(e.scrollTop) > 3.0 && deltaYvar > 0) {
             scrolled = true;
+            clearTimeout(scrolledTimeOut);
             scrolledTimeOut = setTimeout(() => {
                 scrolled = false;
             }, scrollingDelay);
@@ -649,17 +655,20 @@
     function scroll() {
 
         var scrollDiv = checkScroll();
-
+        console.log("Timeout");
+        console.log(scrolledTimeOut);
         if (!scrolled && !ctrl && !shift && navEl.classList.contains("closed") && scrollDiv) {
             if (deltaYvar < -WINDOWHEIGHT * PERCENTAGE) {
                 if (page + 1 <= pagesEl.length) {
                     page++;
+                    document.getElementById("arrow").style.animation = "none"; 
                 }
             } else if (deltaYvar > WINDOWHEIGHT * PERCENTAGE) {
                 if (page >= 2)
                     page--;
             }
             scrolled = true;
+            clearTimeout(scrolledTimeOut);
             scrolledTimeOut = setTimeout(() => {
                 scrolled = false;
             }, 1000);
@@ -674,6 +683,8 @@
             pagesEl[i].style.transition = scrollTime +"s ease";
             pagesEl[i].style.top = ((i + 1) - page) * 100 + "%";
         }
+        console.log(page + " " + scrolled);
+      
         setColor();
         var bodyEl = document.querySelector("body");
         if (page == 1) {

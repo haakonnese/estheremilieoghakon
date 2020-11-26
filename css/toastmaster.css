@@ -42,7 +42,6 @@
     box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1);
     
 } 
-
 .toastmaster-name{
     display: inline-block;
     vertical-align:top;
@@ -80,6 +79,7 @@
     display: inline-block;
     background-position: center;
     /* border-radius: 50%; */
+    margin-top: -1px;
 }
 #toastmasterfemale{
     background-image: url(../background-images/kristin.jpg);

@@ -22,8 +22,8 @@ if(!$conn)
     die('0');
 else{
     if ( $_POST["rsvp"] == "Kan komme") {
-        $sql = "INSERT INTO kankomme (navn, telefonnummer, allergier) 
-        VALUES ('".$_POST["name"]."', '".$_POST["phoneNumber"]."', '".$_POST["allergier"]."')";
+        $sql = "INSERT INTO kankomme (navn, telefonnummer, allergier, middag) 
+        VALUES ('".$_POST["name"]."', '".$_POST["phoneNumber"]."', '".$_POST["allergier"]."', '".$_POST["dinner"]."')";
     }
     else if ( $_POST["rsvp"] == "Kan IKKE komme") {
         $sql = "INSERT INTO kanikkekomme (navn, telefonnummer) 
@@ -40,7 +40,7 @@ else{
     }  
     mysqli_close($conn);
 }
-if(!mail($to,$subject, $_POST["allergier"], "From: 'Registrering bryllup EEH' <registrering@eshteremilieoghakon.no>")) {
+if(!mail($to,$subject, $_POST["allergier"], "From: 'Registrering bryllup EEH' <registrering@estheremilieoghakon.no>")) {
     echo error_get_last()['message'];
 }
 ?>

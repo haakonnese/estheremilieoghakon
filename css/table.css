@@ -1,0 +1,16 @@
+#tabell {
+    padding: 1em;
+    text-align: center;
+}
+h1 {
+    margin-left: 1em;
+}
+#tabell > * > tr > *{
+    padding: 1em;
+}
+#tabell > *>tr:nth-child(2n) {
+    background-color: lightgray;
+}
+#tabell > *>tr:nth-child(2n-1) {
+    background-color: whitesmoke;
+}

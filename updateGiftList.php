@@ -27,6 +27,9 @@
             else 
                 echo "1";
         }
+        else {
+            echo "2";
+        }
         
     }
     mysqli_close($conn);

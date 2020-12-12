@@ -98,7 +98,9 @@ form input::placeholder{
 }
 .container .radioDiv .radioLabel{
     margin-left: 0.2em;
- 
+}
+.container .radioDiv .checkLabel{
+    margin-left: calc(0.2em - 2px);
 }
 form input[type="submit"] , #sendNew,.giftlistRegistrerButton{
     -webkit-box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1) !important;
@@ -114,7 +116,9 @@ form input[type="submit"] , #sendNew,.giftlistRegistrerButton{
 form input[type="submit"], #sendNew,.giftlistRegistrerButton{
     border: 1px solid rgba(0,0,0,0.1);
 }
-
+.radioDiv input[type="checkbox"] {
+    margin-left: 5px;
+}
 /* #form> h1, #form h2 {
     margin: 0px;
     padding: 0px;

@@ -9,7 +9,7 @@ ul {
 }
 #arrow {
     border: solid whitesmoke;
-    border-width: 0 5px 5px 0;
+    border-width: 0 0.25em 0.25em 0;
     display: inline-block;
     padding: 1.5em;
     transform: translateX(-50%) rotate(45deg);
@@ -67,6 +67,7 @@ i{
 .info:hover{
     background-color:black;
     opacity: 50%;
+    color: whitesmoke !important;
 }
 .info:active{
     background-color: black;
@@ -129,8 +130,9 @@ i{
     background-position-y: top;
 }
 #page1{
-    background-image: url(../background-images/DSC01932-compressed.JPG);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4),transparent, rgba(0, 0, 0, 0.4)), url(../background-images/DSC01932-compressed.JPG);
     top:0;
+    background-blend-mode: overlay;
 }
 #page2img{
     right:0;
@@ -160,6 +162,7 @@ i{
 }
 #marry > h1, #marry > h2,  #marry > h3 ,  #marry > h4  {
     text-shadow: -4px 4px 8px #515151;
+
 }
 
 .closed{
@@ -175,12 +178,12 @@ i{
     transition: 0.5s;
 }
 .scrolled .hamClass{
-    background-color: black;
+    /* background-color: black; */
     transition: 0.5s;
+    color: black;
 }
 #form{
     position: relative;
-    top:20%;
     display: block;
     left:0;  
 } 
@@ -234,7 +237,7 @@ i{
         transition: 0.5s ease;
     }
     .opened .hamClass{
-        background-color: white;
+        /* background-color: white; */
         color: black;
         opacity: 100%;
     }

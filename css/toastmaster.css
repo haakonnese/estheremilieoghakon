@@ -111,6 +111,7 @@
 }
 #toastmaster-contact-button:hover{
     transform: scale(1.1) translate(-50%);
+    cursor: pointer;
 }
 #toastmaster-contact-form{
     

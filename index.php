@@ -6,7 +6,7 @@
     <title>EE&H 26.06.2021</title>
     <script src="jquery-3.5.1.min.js"></script>
     <link href="background-images/logo.png" rel="icon" type="image/png">
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:400" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/site-specific.css?ver=1">
     <link rel="stylesheet" type="text/css" href="css/stil.css?ver=1">
     <link rel="stylesheet" type="text/css" href="css/contact-form.css?ver=1">
@@ -103,11 +103,17 @@
                         </div>
                         <div class="radioDiv">
                             <input id="cannot" type="radio" name="rsvp" value="Kan IKKE komme" required
-                                class="radio-button">
+                            class="radio-button">
                             <label for="cannot" class="radioLabel">Jeg kan <b>IKKE</b> komme</label>
                         </div>
                     </div>
-
+                    <div>
+                        <div class="radioDiv">
+                            <input id="fridayDinner" type="checkbox" name="dinnerResponse" value="DinnerFriday" >
+                            <label for="fridayDinner" class="checkLabel">Ønsker middag (grilling) fredag</label>
+                        </div>
+                    </div>
+                    
                     <div>
                         <input type="submit" name="submit" id="registrationButton" value="Send">
                     </div>
@@ -362,8 +368,9 @@
 
             if (window.innerWidth <= 1279) {
                 infoEl[i].style.color = "black";
-            } else {
-                infoEl[i].style.color = "white";
+            }
+            else {
+                infoEl[i].style.color = "whitesmoke";
             }
             if (page - 1 == i) {
                 infoEl[i].style.color = "rgb(248, 227, 42)";
@@ -416,12 +423,15 @@
         var allergier = document.querySelector('input[name="allergier"]').value;
         var rsvp = document.querySelector('input[name="rsvp"]:checked').value;
         const spinEl = document.getElementById("registrationButton");
-
+        var dinnerFriday = document.querySelector('input[name="dinnerResponse"]').checked;
+        if (dinnerFriday) {
+            dinnerFriday = 1;
+        }
         spinEl.classList.add("loading");
         $.ajax({
             type: "post",
             url: "submitted",
-            data: "name=" + name + "&phoneNumber=" + phoneNumber + "&allergier=" + allergier + "&rsvp=" + rsvp,
+            data: "name=" + name + "&phoneNumber=" + phoneNumber + "&allergier=" + allergier + "&rsvp=" + rsvp + "&dinner=" + dinnerFriday,
 
             success: function(data) {
                 spinEl.classList.remove("loading");
@@ -518,7 +528,8 @@
         var bought = number.value;
         if (bought == "")
             bought = 0;
-        if (bought > 0) {
+      
+        if (bought > 0 ) {
             $.ajax({
                 type: "post",
                 url: "updateGiftList",
@@ -536,6 +547,16 @@
                                 popupEl.style.display = "none";
                             }, 15000);
                         }, 200);
+                    } else if (data=="2") {
+                        setTimeout(() => {
+                        giftList();
+                        popupEl.style.display = "block";
+                        popupEl.innerHTML =
+                            "<p>Noen andre kjøpte akkurat denne gaven</p>";
+                        setTimeout(() => {
+                            popupEl.style.display = "none";
+                        }, 15000);
+                    }, 200);
                     } else {
                         setTimeout(() => {
                         giftList();

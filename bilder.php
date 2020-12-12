@@ -112,7 +112,7 @@
         });
     }
 
-    function scrollToPage(page, number) {
+    function scrollToPage(page) {
         window.location = '/#' + page;
     }
     document.getElementById("slideshow").addEventListener("click", close);

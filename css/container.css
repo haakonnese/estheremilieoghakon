@@ -12,7 +12,7 @@
     box-sizing: border-box;
     font-size: large;
     display: table;
-    padding-top:90px
+    padding-top:90px;
 }
 #registration, #toastmaster {
     padding-top:15vh; 
@@ -33,7 +33,7 @@
 @media only screen and (max-width: 1279px) {
     .container{
         top:0;
-        padding-top: 60px !important;
+        padding-top: 5vh !important;
     }
 }
 @media only screen and (max-width: 800px) {
@@ -54,12 +54,7 @@
     }
 
 }
- @media only screen and (max-width: 500px) {
-    .container{
-        padding-top: 45px !important;
-    }
 
-}
 /*
 @media only screen and (max-width: 350px) {
     .container{

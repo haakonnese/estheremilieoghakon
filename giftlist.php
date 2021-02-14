@@ -5,7 +5,8 @@
     $password = "hkhy9od2GBcvvk";
     $dbname = "3513425_bryllup";
     */
-   ob_start();
+    ob_start();
+//   echo $_POST;
     class Gift {
         public $id;
         public $price;
@@ -17,7 +18,7 @@
         public $link;
 
     }
-    $servername = "localhost";
+    $servername = "localhost:3307";
     $username = "root";
     $password = "";
     $dbname = "bryllup";
@@ -29,7 +30,6 @@
     else{
         $order = $_POST['order'];
         $result;
-        
         if($_POST['zero']=="false"){
             $result = mysqli_query($conn,"SELECT * FROM gaveliste WHERE gjenstaende !=0 ORDER BY ".$order);
         }
@@ -54,7 +54,7 @@
         
         mysqli_close($conn);
         ob_end_clean();
-        echo json_encode($data);
+        var_dump(json_encode($data));
 
     }
 ?>

@@ -1,6 +1,6 @@
 <?php
         ob_start();
-        $servername = "localhost";
+        $servername = "localhost:3307";
         $username = "root";
         $password = "";
         $dbname = "bryllup";

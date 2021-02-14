@@ -21,5 +21,14 @@
 .map-container{
     display: table;
     color: black;
-    padding: 4vh;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-left: 0;
+}
+@media only screen and (max-width: 800px) {
+  .map-container{
+    padding-bottom: 3em;
+    padding-right: 4vh;
+    padding-left: 4vh;
+}  
 }

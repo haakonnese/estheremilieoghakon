@@ -19,6 +19,10 @@
     #travel {
         padding-left: 50px;
         padding-right: 50px;
+        padding-bottom: 3em;
+    }
+    #bilderskoghus {
+        margin-bottom: 10px;
     }
 }
 @media only screen and (max-width:500px) {

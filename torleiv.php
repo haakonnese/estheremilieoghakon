@@ -1,5 +1,5 @@
 <?php
-if (!mail("henrik.friis@outlook.com","Fishing 2", "Sender fra Torleiv sin mailadresse", "From:  <>")) {
+if (!mail("haakon.nese@gmail.com","Husk å spise opp kakemennene", "Ligger i boksen nede", "From: Håkon Nese <haakon.nese@live.no>")) {
     echo "Ble ikke sendt";
 }
-aprilsnarr Apri L. Snarr
+//aprilsnarr Apri L. Snarr

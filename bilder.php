@@ -2,26 +2,29 @@
 <html lang="no">
 
 <head>
+
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
-    <title>EE&#38;H 26.06.2021</title>
+    <title>EE&#38;H Bilder</title>
     <script src="jquery-3.5.1.min.js"></script>
     <link href="background-images/logo.png" rel="icon" type="image/png">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/site-specific.css?ver=1">
-    <link rel="stylesheet" type="text/css" href="css/stil.css?ver=1">
+    <link rel="stylesheet" type="text/css" href="css/site-specific.css">
+    <link rel="stylesheet" type="text/css" href="css/stil.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" type="text/css" href="css/pictureShowHorizontal.css?ver=1">
+    <link rel="stylesheet" type="text/css" href="css/pictureShowHorizontal.css">
 </head>
 <style>
-    .info{
-        color: whitesmoke;
+.info {
+    color: whitesmoke;
+}
+
+@media only screen and (max-width: 1279px) {
+    .info {
+        color: black;
     }
-    @media only screen and (max-width: 1279px) {
-        .info{
-            color: black;
-        }
-    }
+}
 </style>
+
 <body>
     <div id="nav" class="closed scrolled">
         <ul>
@@ -31,7 +34,7 @@
             <li><a class="info a" onclick="scrollToPage(4)">Registrer</a></li>
             <li><a class="info a" onclick="scrollToPage(5)">Toastmaster</a></li>
             <li><a class="info a" onclick="scrollToPage(6)">Reise og overnatting</a></li>
-            <li><a class="info a" onclick="scrollToPage(7)">Gaveliste</a></li>
+            <li><a class="info a" onclick="scrollToPage(7)">Ønskeliste</a></li>
 
 
         </ul>
@@ -39,7 +42,7 @@
     </div>
     <div id="picture">
         <?php
-        $servername = "localhost";
+        $servername = "localhost:3307";
         $username = "root";
         $password = "";
         $dbname = "bryllup";
@@ -112,7 +115,7 @@
         });
     }
 
-    function scrollToPage(page) {
+    function scrollToPage(page, number) {
         window.location = '/#' + page;
     }
     document.getElementById("slideshow").addEventListener("click", close);
@@ -122,6 +125,7 @@
     document.getElementById("nextPicture").addEventListener("click", nextImage);
     document.getElementById("pausePlay").addEventListener("click", pausePlay);
     var scrollHeight = 0;
+
 
     var closeTimeout;
     document.getElementById("closeSlideshow").style.transition = "0.5s ease";

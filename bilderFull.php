@@ -7,21 +7,23 @@
     <script src="jquery-3.5.1.min.js"></script>
     <link href="background-images/logo.png" rel="icon" type="image/png">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/site-specific.css?ver=1">
-    <link rel="stylesheet" type="text/css" href="css/stil.css?ver=1">
+    <link rel="stylesheet" type="text/css" href="css/site-specific.css">
+    <link rel="stylesheet" type="text/css" href="css/stil.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" type="text/css" href="css/pictureShowHorizontal.css?ver=1">
+    <link rel="stylesheet" type="text/css" href="css/pictureShowHorizontal.css">
 </head>
 <style>
-    .info{
-        color: whitesmoke;
+.info {
+    color: whitesmoke;
+}
+
+@media only screen and (max-width: 1279px) {
+    .info {
+        color: black;
     }
-    @media only screen and (max-width: 1279px) {
-        .info{
-            color: black;
-        }
-    }
+}
 </style>
+
 <body>
     <div id="nav" class="closed scrolled">
         <ul>
@@ -39,7 +41,7 @@
     </div>
     <div id="picture">
         <?php
-        $servername = "localhost";
+        $servername = "localhost:3307";
         $username = "root";
         $password = "";
         $dbname = "bryllup";

@@ -16,10 +16,10 @@ input::-webkit-inner-spin-button {
 .popup {
     display: none;
     position: absolute !important;
-    height:auto;
     max-width: 90%;
     width: max-content;
     border: 2px solid black;
+    height:auto;
     left:50%;
     top: 50%;
     transform: translate(-50%,-50%);
@@ -42,8 +42,11 @@ input::-webkit-inner-spin-button {
 #giftlist td{
     width:15%;
 }
-#giftlist th{
+.giftlistLeft{
     text-align:left;
+}
+.giftlistMiddle{
+    text-align:center;
 }
 .giftName{
     width: 30%;
@@ -53,9 +56,9 @@ input::-webkit-inner-spin-button {
     border-radius: 0;
 
 }
+
 #sortGiftList {
     height: 2em;
-    border: none;
     -webkit-box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1);
     -moz-box-shadow:0 15px 30px -10px rgba(0,0,0,0.1);
     box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1);
@@ -63,9 +66,12 @@ input::-webkit-inner-spin-button {
 }
 .giftlistImg {
     height: 70px;
+    width: 70px;
     margin: 0;
     padding: 0;
     display: block;
+    object-fit:contain;
+    margin-right:1.5em;
 }
 .giftPicture {
     padding:0;
@@ -87,12 +93,12 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-@media only screen and (min-width: 601px) {
+@media only screen and (min-width: 701px) {
     .giftlistRegistrerButton {
         height: 68px;
     }
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
     #giftListHeader{
         display: none !important;
     }

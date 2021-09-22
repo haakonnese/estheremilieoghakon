@@ -1,0 +1,124 @@
+.uploadBtn {
+  position: relative;
+  word-wrap: break-word;
+  width: calc(50% - 4px);
+  padding: 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border: 1px dashed #bbb;
+  text-align: center;
+  background-color: #ddd;
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 3px;
+}
+
+#uploadSubmit {
+  -webkit-box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1) !important;
+  -moz-box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1) !important;
+  cursor: pointer;
+  transition: 0.2s ease;
+  height: 3.5em;
+  align-self: center;
+  background-color: rgba(0, 0, 0, 0.822);
+  color: whitesmoke;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#moreButton {
+  -webkit-box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1) !important;
+  -moz-box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1) !important;
+  cursor: pointer;
+  transition: 0.2s ease;
+  height: 3.5em;
+  align-self: center;
+  background-color: rgba(0, 0, 0, 0.822);
+  color: whitesmoke;
+  padding: 0.3em 2%;
+  /* margin-bottom: 1em; */
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: larger;
+}
+
+.divUp {
+  width: 150px;
+  margin: 3px;
+  border-radius: 5px;
+  height: 150px;
+  position: relative;
+  display: inline-block;
+}
+
+.imUp {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  padding: 0.5em;
+  vertical-align: unset;
+}
+
+.vidUp {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  padding: 0.5em;
+}
+
+.remove {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: grey;
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  font-size: larger;
+  cursor: pointer;
+}
+.info {
+  color: whitesmoke;
+}
+
+.container {
+  padding-top: 90px !important;
+}
+
+@media only screen and (max-width: 1279px) {
+  .container {
+    top: 0;
+    padding-top: 5vh !important;
+  }
+  .info {
+    color: black;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .container {
+    width: 100%;
+    margin: 0;
+    padding: 4vw;
+    /* padding-top:60px; */
+    /* font-size: small; */
+  }
+}

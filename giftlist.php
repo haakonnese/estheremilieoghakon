@@ -1,12 +1,9 @@
 <?php
-/*
-    $servername = "fdb28.awardspace.net";
-    $username = "3513425_bryllup";
-    $password = "hkhy9od2GBcvvk";
-    $dbname = "3513425_bryllup";
-    */
-    ob_start();
-//   echo $_POST;
+    if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+        die();
+    }
+
+   ob_start();
     class Gift {
         public $id;
         public $price;
@@ -28,9 +25,9 @@
     if(!$conn)
         echo '0';
     else{
-        $order = $_POST['order'];
+        $order = $_GET['order'];
         $result;
-        if($_POST['zero']=="false"){
+        if($_GET['zero']=="false"){
             $result = mysqli_query($conn,"SELECT * FROM gaveliste WHERE gjenstaende !=0 ORDER BY ".$order);
         }
         else{
@@ -54,7 +51,7 @@
         
         mysqli_close($conn);
         ob_end_clean();
-        var_dump(json_encode($data));
+        echo json_encode($data);
 
     }
 ?>

@@ -29,12 +29,13 @@
     <div id="nav" class="closed scrolled">
         <ul>
             <li><a class="info a" onclick="scrollToPage(1)">EE&#38;H</a></li>
-            <li><a class="info a" onclick="scrollToPage(2)">Vielse</a></li>
-            <li><a class="info a" onclick="scrollToPage(3)">Fest</a></li>
-            <li><a class="info a" onclick="scrollToPage(4)">Registrer</a></li>
-            <li><a class="info a" onclick="scrollToPage(5)">Toastmaster</a></li>
-            <li><a class="info a" onclick="scrollToPage(6)">Reise og overnatting</a></li>
-            <li><a class="info a" onclick="scrollToPage(7)">Ønskeliste</a></li>
+            <li><a class="info a" onclick="scrollToPage(2)">Korona</a></li>
+            <li><a class="info a" onclick="scrollToPage(3)">Vielse</a></li>
+            <li><a class="info a" onclick="scrollToPage(4)">Fest</a></li>
+            <li><a class="info a" onclick="scrollToPage(5)">Registrer</a></li>
+            <li><a class="info a" onclick="scrollToPage(6)">Toastmaster</a></li>
+            <li><a class="info a" onclick="scrollToPage(7)">Reise og overnatting</a></li>
+            <li><a class="info a" onclick="scrollToPage(8)">Ønskeliste</a></li>
 
 
         </ul>
@@ -91,7 +92,7 @@
     function checkForNewImages() {
         var numberOfPictures = document.querySelectorAll(".item").length;
         $.ajax({
-            type: "post",
+            type: "get",
             url: "fetch",
             data: "numberOfPictures=" + numberOfPictures,
             dataType: "json",
@@ -116,7 +117,7 @@
     }
 
     function scrollToPage(page, number) {
-        window.location = '/#' + page;
+        window.location = 'http://localhost:8080/bryllup/#' + page;
     }
     document.getElementById("slideshow").addEventListener("click", close);
     document.getElementById("slideshow").addEventListener("mousemove", showClose);
@@ -178,32 +179,41 @@
         document.getElementById("picture").style.display = "none";
         showClose();
         document.body.requestFullscreen();
+        var pausePlayEl = document.getElementById("pausePlay");
+        if (pausePlayEl.innerHTML == "pause") {
+            runSlideshow();
+
+        } else {
+            clearTimeout(slide);
+        }
 
     }
     var slide;
 
     function runSlideshow() {
+        slide = setTimeout(() => {
+            nextImage(1);
+        }, 4500);
+        // var slideshowImg = document.querySelectorAll(".slideshowimg");
+        // var img = document.querySelector(".activeImg");
+        // var idNum = parseInt(img.id.substr(12));
+        // if (idNum != slideshowImg.length) {
+        //     slide = setTimeout(() => {
 
-        var slideshowImg = document.querySelectorAll(".slideshowimg");
-        var img = document.querySelector(".activeImg");
-        var idNum = parseInt(img.id.substr(12));
-        if (idNum != slideshowImg.length) {
-            slide = setTimeout(() => {
+        //         var activeImage = document.getElementById("slideshowimg" + (++idNum));
+        //         activeImage.classList.add("activeImg");
+        //         img.classList.remove("activeImg");
+        //         runSlideshow();
+        //     }, 4500);
+        // } else {
 
-                var activeImage = document.getElementById("slideshowimg" + (++idNum));
-                activeImage.classList.add("activeImg");
-                img.classList.remove("activeImg");
-                runSlideshow();
-            }, 4500);
-        } else {
-
-            slide = setTimeout(() => {
-                var activeImage = document.getElementById("slideshowimg" + 1);
-                activeImage.classList.add("activeImg");
-                img.classList.remove("activeImg");
-                runSlideshow();
-            }, 4500);
-        }
+        //     slide = setTimeout(() => {
+        //         var activeImage = document.getElementById("slideshowimg" + 1);
+        //         activeImage.classList.add("activeImg");
+        //         img.classList.remove("activeImg");
+        //         runSlideshow();
+        //     }, 4500);
+        // }
     }
 
     function close(e) {

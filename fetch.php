@@ -17,7 +17,7 @@
         else{
             $query = $conn->query("SELECT * FROM images WHERE status = 1 ORDER BY uploaded_on ASC");
             $number = 0;
-            $numberOfPictures = (int) $_POST['numberOfPictures'];
+            $numberOfPictures = (int) $_GET['numberOfPictures'];
             if($query->num_rows > $numberOfPictures){
                 while($row = $query->fetch_assoc()){
                     if($number++<$numberOfPictures)

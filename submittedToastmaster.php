@@ -12,11 +12,6 @@ $message .= "Antall minutt: ". $_POST["minutes"];
 
 $headers = 'From: Håkon Nese og Esther-Emilie Steilbu' . "\r\n";
 
-    
-// $servername = "fdb28.awardspace.net";
-// $username = "3513425_bryllup";
-// $password = "hkhy9od2GBcvvk";
-// $dbname = "3513425_bryllup";
 $servername = "localhost:3307";
 $username = "root";
 $password = "";
@@ -27,21 +22,21 @@ if(!$conn)
     die('0');
 else{
    
-    $sql = "INSERT INTO toastmaster (navn, email, hva, kjenner, minutter) 
-        VALUES ('".$_POST["name"]."', '".$_POST["email"]."', '".$_POST["what"]."', '".$_POST["relationship"]."', '".$_POST["minutes"]."')";
-    }
-   
-    
-// mail
-
-    if (!mysqli_query($conn, $sql)){
-         echo '0';
-    }
+    if( $sql = mysqli_prepare($conn, "INSERT INTO toastmaster (navn, email, hva, kjenner, minutter) 
+        VALUES (?,?,?,?,?)")) {
+            mysqli_stmt_bind_param($sql, "ssssi", $_POST["name"], $_POST["email"], $_POST["what"], $_POST["relationship"], $_POST["minutes"]);
+            mysqli_stmt_execute($sql);
+            echo "1";
+        }
     else {
-         echo '1';
-    }  
+        echo "0";
+    }
+    
+    mysqli_stmt_close($sql);
     mysqli_close($conn);
+}
 
+// mail
 if(!mail($to,$subject, $message, "From: 'Toastmaster bryllup EEH' <toastmaster@eshteremilieoghakon.no>")) {
     echo '0';
 }

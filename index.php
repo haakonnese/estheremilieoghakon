@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="css/ceremony.css">
     <link rel="stylesheet" type="text/css" href="css/toastmaster.css">
     <link rel="stylesheet" type="text/css" href="css/giftlist.css">
-    <link rel="stylesheet" type="text/css" href="css/travel.css">
+    <link rel="stylesheet" type="text/css" href="css/travel.css?ver=1.1">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
@@ -23,12 +23,13 @@
     <div id="nav" class="closed">
         <ul>
             <li><a class="info a" onclick="scrollToPage(1)" style="color: khaki;">Til toppen</a></li>
-            <li><a class="info a" onclick="scrollToPage(2)">Vielse</a></li>
-            <li><a class="info a" onclick="scrollToPage(3)">Fest</a></li>
-            <li><a class="info a" onclick="scrollToPage(4)">Registrer</a></li>
-            <li><a class="info a" onclick="scrollToPage(5)">Toastmaster</a></li>
-            <li><a class="info a" onclick="scrollToPage(6)">Reise og overnatting</a></li>
-            <li><a class="info a" onclick="scrollToPage(7)">Gaveliste</a></li>
+            <li><a class="info a" onclick="scrollToPage(2)">Korona</a></li>
+            <li><a class="info a" onclick="scrollToPage(3)">Vielse</a></li>
+            <li><a class="info a" onclick="scrollToPage(4)">Fest</a></li>
+            <li><a class="info a" onclick="scrollToPage(5)">Registrer</a></li>
+            <li><a class="info a" onclick="scrollToPage(6)">Toastmaster</a></li>
+            <li><a class="info a" onclick="scrollToPage(7)">Reise og overnatting</a></li>
+            <li><a class="info a" onclick="scrollToPage(8)">Ønskeliste</a></li>
             <li><a class="info a" href="bilder">Bilder</a></li>
         </ul>
         <a id="ham" class="hamClass a" onclick="openNav(false)"><i class="material-icons">menu</i></a>
@@ -44,9 +45,38 @@
             <i class="arrow updown" id="arrow1"></i>
         </div>
     </div>
-
     <div class="page fade" id="page2">
-        <div id="page2img" class="pageimg"></div>
+        <div class="container" id="corona">
+            <h2>Koronainformasjon</h2>
+            <p>Det ser ut til at koronasituasjonen også i år setter en begrensing for bryllupsfeiringer.
+                Slik situasjonen er i dag, og ut i fra de signalene regjeringen har gitt, ser det ut til at det vil være
+                en begrensning på 50 personer under bryllupsfesten. Vi tar foreløpig utgangspunkt i dette.</p>
+            <p>Selv om det skulle være en begrensning på 50 personer, ønsker vi å gjennomføre feiringen så normalt som
+                mulig, innenfor de retningslinjene som er satt.
+                Vi setter derfor STOR pris på om du ønsker å komme og feire dagen sammen med oss, og registrer dette.
+            </p>
+            <!-- <p>
+
+                <a style="cursor: pointer; text-decoration: underline;
+  color: blue;" onclick="scrollToPage(5)">her</a>. 
+            </p> -->
+            <p>
+                Etter svarfristen vil vi, dersom det blir nødvendig, gjøre en prioritering. Dersom du har gitt
+                beskjed at du vil
+                komme, vil du få beskjed innen 5. mai om det er plass til deg eller ikke.
+            </p>
+            <p>Vi skjønner at mye er usikkert, og at det kan være vanskelig å bestille flybilletter når alt er såpass
+                usikkert som det er nå. Vi har derfor kommet opp med en alternativ løsning dersom man kun kan være 20
+                stk inne. Feiringen vil da enten gjennomføres ute dersom været og koronarestriksjonene
+                tillater det eller så vil vi gjennomføre to feiringer, en på lørdag til opprinnelig tid, og en
+                på søndag kl 12:00. </p>
+            <p>Dersom regjeringen kommer med mer og sikrere informasjon vil dette bli lagt ut her, samt at alle påmeldte
+                vil få en melding med informasjon. </p>
+        </div>
+        <i class="arrow blackarrow" id="arrow2"></i>
+    </div>
+    <div class="page fade" id="page3">
+        <div id="page3img" class="pageimg"></div>
         <div class="container map-container" id="ceremony">
             <div id="ceremony-info" class="map-info">
                 <h2>Vielse</h2>
@@ -58,12 +88,12 @@
                 <iframe class="iframeMap"
                     src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d126676.19675221508!2d17.81700339631823!3d69.25660064707294!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x45db48dbd0c4d4f1%3A0xff715b332978ebc9!2sLenvik%20kirke!5e0!3m2!1sno!2sus!4v1595196145854!5m2!1sno!2sus"
                     frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                <i class="arrow blackarrow" id="arrow2"></i>
+                <i class="arrow blackarrow" id="arrow3"></i>
             </div>
         </div>
     </div>
-    <div class="page fade" id="page3">
-        <div id="page3img" class="pageimg"></div>
+    <div class="page fade" id="page4">
+        <div id="page4img" class="pageimg"></div>
         <div class="container map-container" id="dinner">
             <div id="dinner-info" class="map-info">
                 <h2>Fest</h2>
@@ -75,11 +105,11 @@
                 <iframe class="iframeMap"
                     src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d54813.494225025825!2d17.97606152424422!3d69.25975139488655!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x45db4420e30e7569%3A0xb8028c1b421dab08!2sSkoghus%20Leirsted!5e0!3m2!1sno!2sno!4v1595330309238!5m2!1sno!2sno"
                     frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                <i class="arrow blackarrow" id="arrow3"></i>
+                <i class="arrow blackarrow" id="arrow4"></i>
             </div>
         </div>
-        <div class="page fade" id="page4">
-            <div id="page4img" class="pageimg"></div>
+        <div class="page fade" id="page5">
+            <div id="page5img" class="pageimg"></div>
             <div class="container" id="registration">
                 <div class="container-info" id="form">
                     <h2>Registrer om du kommer eller ikke</h2>
@@ -131,11 +161,11 @@
                 <div class="container-info" id="unsubmitted-form" style="display:none">
                     <h2>Det skjedde en feil. Venligst kontakt 48075305 for å si i fra at du kommer.</h2>
                 </div>
-                <i class="arrow blackarrow" id="arrow4"></i>
+                <i class="arrow blackarrow" id="arrow5"></i>
 
             </div>
         </div>
-        <div class="page fade" id="page5">
+        <div class="page fade" id="page6">
             <div id="toastmaster" class="container">
                 <h2>Toastmastere</h2>
                 <div id="toastmaster-table">
@@ -151,7 +181,8 @@
                         <div class="toastmaster-img" id="toastmasterfemale"></div>
                         <div class="toastmaster-name">
                             <p><b>Navn:</b> Kristin Ramsli Søyland<br>
-                                <b>Kjenner brudeparet fra:</b> Fjellheim/NN-team og Trondheim. Bor med Esther-Emilie.
+                                <b>Kjenner brudeparet fra:</b> Fjellheim/NN-team og Trondheim. Bor med
+                                Esther-Emilie.
                             </p>
                         </div>
                     </div>
@@ -183,6 +214,10 @@
                                 required />
                             <label class="infoLabel">Antall minutt</label>
                         </div>
+                        <div>
+                            <input type="text" name="equipmentToast" placeholder="Telefonnummer" />
+                            <label class="infoLabel">Hva trenger du av utstyr (valgfri)</label>
+                        </div>
 
                         <div id="submitDivToastmaster">
                             <input type="submit" name="submit" class="makeButtonSpin" id="toastmasterSpin" value="Send">
@@ -190,23 +225,26 @@
                     </form>
                 </div>
                 <div class="popup" id="popupToastmaster"></div>
-                <i class="arrow blackarrow" id="arrow5"></i>
+                <i class="arrow blackarrow" id="arrow6"></i>
             </div>
 
         </div>
-        <div class="page fade" id="page6">
+        <div class="page fade" id="page7">
             <div class="container" id="travel">
                 <h2>Reisemuligheter</h2>
                 <p>Det er mulig å fly til Bardufoss (kun sas), Tromsø og Evenes. <br><br>
                     Fra Bardufoss flyplass tar det 40 min med bil, eventuelt litt lengre tid med flybuss. <br>
-                    Fra Tromsø og Evenes tar det 2,5 timer å kjøre. Herfra er det også mulig å komme seg til Finnsnes
+                    Fra Tromsø og Evenes tar det 2,5 timer å kjøre. Herfra er det også mulig å komme seg til
+                    Finnsnes
                     ved
                     hjelp av buss og hurtigbåt.
                     Sjekk <a class="link" href="https://tromskortet.no" target="_blank">tromskortet.no</a> for
                     reiseruter og
                     priser (fly og buss/båt korresponderer ikke nødvendigvis godt).<br><br>
-                    Det er mulig å leie bil på alle flyplassene. Ettersom det er 25 minutters kjøring mellom vielse og
-                    festlokale kan dette anbefales. Da vil det også være mulig å være litt turist på Senja, noe som kan
+                    Det er mulig å leie bil på alle flyplassene. Ettersom det er 25 minutters kjøring mellom vielse
+                    og
+                    festlokale kan dette anbefales. Da vil det også være mulig å være litt turist på Senja, noe som
+                    kan
                     anbefales hvis du ikke har vært her før.
                 </p>
                 <h2>Overnatting</h2>
@@ -216,14 +254,16 @@
                     <img class="skoghusimages" src="background-images/skoghusutsikt.jpg" alt="Skoghus utsikt">
                 </div>
                 <h3>Kapasitet</h3>
-                <p>Skoghus har ca. 50 sengeplasser. De har ett rom med 6 sengeplasser, to med 5, to med 4, og resten er
+                <p>Skoghus har ca. 50 sengeplasser. De har ett rom med 6 sengeplasser, to med 5, to med 4, og resten
+                    er
                     1, 2
                     eller 3 sengsrom.</p>
                 <h3>Priser per natt</h3>
                 <p>Enmannsrom: 650,-<br>
                     Tomannsrom: 800,- <br>
                     Utover to pers, koster hver person 200,- ekstra på samme rom.<br>
-                    Rommene har oppredde senger og håndklær. Dersom du ønsker å ta med håndklær og sengetøy selv, blir
+                    Rommene har oppredde senger og håndklær. Dersom du ønsker å ta med håndklær og sengetøy selv,
+                    blir
                     prisen noe redusert.
                 </p>
                 <h3>Bestill rom</h3>
@@ -237,15 +277,15 @@
                     For mer informasjon om Senja, turmuligheter og alternative overnattinger besøk <a
                         href="https://visitsenja.no">visitsenja.no</a>
                 </p>
-                <i class="arrow blackarrow" id="arrow6"></i>
+                <i class="arrow blackarrow" id="arrow7"></i>
 
 
 
             </div>
         </div>
-        <div class="page fade" id="page7">
+        <div class="page fade" id="page8">
             <div class="container" id="giftlistContainer">
-                <h2>Gaveliste</h2>
+                <h2>Ønskeliste</h2>
                 <input type="checkbox" id="showZeroRemaining" checked><label>Vis kjøpte &#9;</label>
                 <select id="sortGiftList">
                     <option value="store ASC">Butikk</option>
@@ -264,6 +304,7 @@
         const appearOptions = {
             threshold: 0.5
         };
+        // fade in pages when scrolling for the first time
         const faders = document.querySelectorAll(".fade");
         const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
             entries.forEach(entry => {
@@ -308,21 +349,24 @@
                     timer = " time,</br>";
                 }
                 if (days > 0) {
-                    document.getElementById("countDown").innerHTML = days + dager + hours + timer + minutes +
+                    document.getElementById("countDown").innerHTML = days + dager + hours + timer +
+                        minutes +
                         minutter + seconds + sekunder;
                 } else if (hours > 0) {
                     document.getElementById("countDown").innerHTML = hours + timer + minutes + minutter +
                         seconds +
                         sekunder;
                 } else if (minutes > 0) {
-                    document.getElementById("countDown").innerHTML = minutes + minutter + seconds + sekunder;
+                    document.getElementById("countDown").innerHTML = minutes + minutter + seconds +
+                        sekunder;
                 } else {
                     document.getElementById("countDown").innerHTML = seconds + sekunder;
                 }
                 // If the count down is finished, write some text
-                if (distance < 0) {
+                if (distance > 0) {
                     clearInterval(x);
-                    document.getElementById("countDown").innerHTML = "NYGIFT";
+                    document.getElementById("countDown").innerHTML =
+                        "<a style='color: white;' href='https://estheremilieoghakon.no/lastopp'>Last opp bilder fra dagen her</a>";
                 }
             }, 1000);
         }
@@ -339,6 +383,7 @@
         var WINDOWHEIGHT = window.innerHeight;
         var topp = false;
         var bottom = false;
+        var clicked = false;
         var scrolledTimeOut;
         const webadress = "toastmaster@estheremilieoghakon.no";
         var scrollTime = 0.5;
@@ -347,6 +392,8 @@
             scrollTime = 0.8;
             var scrollingDelay = 500;
         }
+
+        // says that navbar is closed when page is clicked
         pagesEl.forEach(pageEventListener => {
             pageEventListener.addEventListener("click", () => {
                 if (navEl.classList.contains("opened")) {
@@ -355,8 +402,11 @@
 
             });
         });
+        // toggle get or not of non-remaining items in giftlist
         $("#showZeroRemaining").on("change", giftList);
         $("#sortGiftList").on("change", giftList);
+
+        // scroll to the next page when arrow-down is clicked
         $('#arrow1').on("click", () => {
             scrollToPage(2);
             document.getElementById("arrow1").style.animation = "none";
@@ -376,14 +426,26 @@
         $('#arrow6').on("click", () => {
             scrollToPage(7);
         });
+        $('#arrow7').on("click", () => {
+            scrollToPage(8);
+        });
 
+        // runs when body is loaded
         function setTop() {
             countDown();
+
+            // nav-bar color. Selected page is highlighted
             setColor();
+
+            // get the giftlist from database
             giftList();
+
+            // set offset from top to the pages so that scrolling feels natural 
             for (var i = 0; i < pagesEl.length; i++) {
                 pagesEl[i].style.top = (i - page + 1) * 100 + "%";
             }
+
+            // open link to giftlist-item in a new window
             const rows = document.querySelectorAll("td[data-href]");
             rows.forEach(row => {
                 row.addEventListener("click", () => {
@@ -391,9 +453,11 @@
                 });
             });
 
+            // remove # in url
             checkURL();
         }
 
+        // set color of navbar. If mobile use different color than pc
         function setColor() {
             var infoEl = document.querySelectorAll(".info");
             for (var i = 0; i < infoEl.length; i++) {
@@ -409,10 +473,12 @@
             }
         }
 
+        // close toastmastercontact-form
         function setContactFormFalse() {
             setContactForm(false);
         }
 
+        // opens or closes contact-form for toastmaster
         function setContactForm(open) {
             var page5El = document.getElementById("page5");
             var buttonEl = document.getElementById("toastmaster-contact-button");
@@ -437,8 +503,10 @@
                 setOverlayHeight(0);
             }
         }
+
+        // makes phonenumber not required when one can not come
         $('input[name="rsvp"]').change(function(e) {
-            console.log($(this).val());
+            // console.log($(this).val());
             if ($(this).val() == "Kan IKKE komme") {
 
                 document.querySelector('#phoneNumber').required = false;
@@ -447,6 +515,7 @@
             }
         });
 
+        // send to db and mail that one can or cannot come to the wedding
         function sendRSVP() {
             var buttonEl = document.getElementById("submit");
             var name = document.querySelector('input[name="name"]').value;
@@ -457,17 +526,25 @@
             var dinnerFriday = document.querySelector('input[name="dinnerResponse"]').checked;
             if (dinnerFriday) {
                 dinnerFriday = 1;
+            } else {
+                dinnerFriday = 0;
             }
+
+            // loading button while waitng for response
             spinEl.classList.add("loading");
+            spinEl.disabled = true;
+            // post data to db and mail
             $.ajax({
                 type: "post",
                 url: "submitted",
-                data: "name=" + name + "&phoneNumber=" + phoneNumber + "&allergier=" + allergier + "&rsvp=" +
+                data: "name=" + name + "&phoneNumber=" + phoneNumber + "&allergier=" + allergier +
+                    "&rsvp=" +
                     rsvp +
                     "&dinner=" + dinnerFriday,
 
                 success: function(data) {
                     spinEl.classList.remove("loading");
+                    spinEl.disabled = false;
                     if (data == '1') {
                         document.getElementById("form").style.display = "none";
                         document.getElementById("submitted-form").style.display = "block";
@@ -477,26 +554,30 @@
                     }
                 },
                 error: function(data) {
+                    spinEl.disabled = false;
                     spinEl.classList.remove("loading");
                     document.getElementById("form").style.display = "none";
-                    document.getElementById("usubmitted-form").style.display = "block";
+                    document.getElementById("unsubmitted-form").style.display = "block";
                 }
             });
             return false;
         }
 
+        // reset rsvp-form
         function sendNew() {
             document.getElementById("contact-form").reset();
             document.getElementById("form").style.display = "block";
             document.getElementById("submitted-form").style.display = "none";
         }
 
+        // post data from user to the toastmaster-db
         function sendToastmaster() {
             var name = document.querySelector('input[name="nameToast"]').value;
             var email = document.querySelector('input[name="emailToast"]').value;
             var relationship = document.querySelector('input[name="relationshipToast"]').value;
             var what = document.querySelector('input[name="whatToast"]').value;
             var minutes = document.querySelector('input[name="minutesToast"]').value;
+            var equipment = document.querySelector('input[name="equipmentToast"]').value;
             var popupEl = document.getElementById("popupToastmaster");
             const spinEl = document.getElementById("toastmasterSpin");
             const divPaddingEl = document.getElementById("submitDivToastmaster");
@@ -505,8 +586,9 @@
             $.ajax({
                 type: "post",
                 url: "submittedToastmaster",
-                data: "name=" + name + "&email=" + email + "&what=" + what + "&relationship=" + relationship +
-                    "&minutes=" + minutes,
+                data: "name=" + name + "&email=" + email + "&what=" + what + "&relationship=" +
+                    relationship +
+                    "&minutes=" + minutes + "&equipment=" + equipment,
                 success: function(data) {
                     divPaddingEl.classList.remove("paddingLoading");
                     spinEl.classList.remove("loading");
@@ -529,7 +611,8 @@
                                 "<p>Det skjedde en feil. Ta kontakt på <a href='mailto: skoghus@nlm.no'>" +
                                 webadress + "</a>" +
                                 "</p>";
-                            document.getElementById("toastmaster-contact-button").style.display =
+                            document.getElementById("toastmaster-contact-button").style
+                                .display =
                                 "none";
                         }, 200);
                     }
@@ -555,6 +638,7 @@
             return false;
         }
 
+        // register that an item is bought, and how many
         function kjop(id) {
             var number = document.getElementById("number" + id);
             var popupEl = document.getElementById("popup");
@@ -563,12 +647,19 @@
             if (bought == "")
                 bought = 0;
 
-            if (bought > 0) {
+            if (bought > 0 && !clicked) {
+                clicked = true;
                 $.ajax({
                     type: "post",
                     url: "updateGiftList",
                     data: "id=" + id + "&bought=" + bought,
                     success: function(data) {
+                        setTimeout(() => {
+                            clicked = false;
+                        }, 2000);
+                        popupEl.style.top = "calc(50% + " +
+                            document.getElementById('page' + page.toString()).scrollTop + "px)";
+                        console.log(document.getElementById('page' + page.toString()).scrollTop);
                         if (data == "1") {
                             setTimeout(() => {
                                 giftList();
@@ -604,6 +695,9 @@
                         }
                     },
                     error: function(data) {
+                        setTimeout(() => {
+                            clicked = false;
+                        }, 2000);
                         setTimeout(() => {
                             giftList();
                             popupEl.style.display = "block";
@@ -646,12 +740,12 @@
 
         function scrollToPage(pageNumber) {
             page = pageNumber;
-
             var navEl = document.getElementById("nav");
             openNav(true);
             scrollElement();
         }
 
+        // restrict scrolling when ctrl or shift is pressed down
         function keyDown(e) {
 
             if (e.keyCode == 17)
@@ -667,14 +761,15 @@
                 shift = false;
         }
 
+        // check how much one scrolls and runs scroll-function
         function scrollDelta(e) {
             deltaYvar = -e.deltaY * WINDOWHEIGHT;
             scroll();
         }
 
+        // checks if user is (alomst) at top or bottom of page or something in between
         function checkScroll() {
             var e = document.getElementById("page" + page.toString());
-            console.log(e.scrollHeight + " " + e.scrollTop + " " + e.clientHeight);
             if ((Math.abs(e.scrollHeight - e.scrollTop - e.clientHeight) > 3.0) && deltaYvar < 0) {
                 scrolled = true;
                 clearTimeout(scrolledTimeOut);
@@ -693,9 +788,9 @@
             return true;
         }
 
+        // check if user is at top or bottom of webpage
         function topBottom() {
             var e = document.getElementById("page" + page.toString());
-
             if (Math.abs(e.scrollHeight - e.scrollTop - e.clientHeight) <= 3.0)
                 bottom = true;
             else
@@ -706,11 +801,10 @@
                 topp = false;
         }
 
+        // scrolling function. Many checks to see if the scroll is legal to prevent unwanted scrolling
         function scroll() {
 
             var scrollDiv = checkScroll();
-            console.log("Timeout");
-            console.log(scrolledTimeOut);
             if (!scrolled && !ctrl && !shift && navEl.classList.contains("closed") && scrollDiv) {
                 if (deltaYvar < -WINDOWHEIGHT * PERCENTAGE) {
                     if (page + 1 <= pagesEl.length) {
@@ -732,13 +826,12 @@
             scrollElement();
         }
 
+        // scrolling to the new page
         function scrollElement() {
             for (var i = 0; i < pagesEl.length; i++) {
                 pagesEl[i].style.transition = scrollTime + "s ease";
                 pagesEl[i].style.top = ((i + 1) - page) * 100 + "%";
             }
-            console.log(page + " " + scrolled);
-
             setColor();
             var bodyEl = document.querySelector("body");
             if (page == 1) {
@@ -756,20 +849,22 @@
                 navEl.classList.add("scrolled");
         }
 
+        // check where user is at start of scrolling
         function touchStart(e) {
             positionY = e.touches[0].clientY;
-            var el = document.getElementById("page" + page.toString());
-            console.log(el.scrollTop);
             topBottom();
         }
 
+        // scrolling to the place where it is natural
+        // for the scroll to be when finger is pressed down on the screen
         function touchMove(e) {
             if (!scrolled && navEl.classList.contains("closed")) {
                 deltaYvar = e.changedTouches[0].clientY - positionY;
                 var percentage = deltaYvar / WINDOWHEIGHT;
+                // if the user tries to scroll up or down and is at top or bottom of the page then allow scroll
                 if (deltaYvar < 0 && bottom || deltaYvar > 0 && topp) {
                     for (var i = 0; i < pagesEl.length; i++) {
-                        //ikke på topp eller bunn og prøve å scrolle opp eller ned
+                        // not on top or bottom when trying to scroll up or down
                         if (!((page == 1 && percentage > 0) || (page == pagesEl.length && percentage < 0))) {
                             pagesEl[i].style.transition = "none";
                             pagesEl[i].style.top = ((i + 1) - page + percentage) * 100 + "%";
@@ -779,6 +874,8 @@
             }
         }
 
+        // release of finger. Scroll to next/previous page if user should be able to scroll,
+        // else scroll back to where user was before starting to scroll
         function touchEnd(e) {
             deltaYvar = e.changedTouches[0].clientY - positionY;
             if (deltaYvar < 0 && bottom || deltaYvar > 0 && topp)
@@ -787,12 +884,14 @@
 
         }
 
+        // get the items on the giftlist and show them to the user
         function giftList() {
             $.ajax({
-                type: "post",
+                type: "get",
                 url: "giftlist",
-                data: "zero=" + $("#showZeroRemaining").is(":checked") + "&order=" + document.getElementById(
-                    "sortGiftList").value,
+                data: "zero=" + $("#showZeroRemaining").is(":checked") + "&order=" + document
+                    .getElementById(
+                        "sortGiftList").value,
                 dataType: "json",
                 success: function(data) {
                     var giftListEl = document.getElementById("giftlist");
@@ -809,8 +908,6 @@
                                     </tr>";
                     if (data != '0') {
                         try {
-
-
                             for (var i = 0; i < data.length; i++) {
                                 var obj = JSON.parse(data[i]);
 
@@ -851,14 +948,19 @@
                             giftListEl.innerHTML = streng;
                         }
                     }
-                }
+                },
             })
         }
 
+        // check url scroll to page and remove #(number) from url
         function checkURL() {
             var word = window.location.href;
             if (word.lastIndexOf("#") > 0) {
                 var letter = word.substr(word.lastIndexOf("#") + 1);
+                console.log(letter === "onskeliste");
+                if (letter === "onskeliste") {
+                    letter = "7";
+                }
                 if (!isNaN(letter) && letter.length > 0) {
                     setTimeout(() => {
                         letter = parseInt(letter);
@@ -873,6 +975,8 @@
 
         }
 
+        // set the hight of the overlay to the toastmaster-contact-form. 
+        // This is needed because the contact-form may be larger than the original page
         function setOverlayHeight(height) {
             var toastmasterEl = document.getElementById("toastmaster");
             var overlayEl = document.getElementById("overlay");

@@ -7,3 +7,17 @@ RewriteRule ^ /%1 [NC,L,R]
 RewriteCond %{REQUEST_FILENAME}.php -f
 RewriteRule ^ %{REQUEST_URI}.php [NC,L]
 
+
+<Files toastmaster.php>
+AuthType Basic
+AuthName "Password Protected Area"
+AuthUserFile C:\xampp\htdocs\Bryllup\password\toastmaster\.htpasswd
+Require valid-user
+</Files>
+
+<Files hvemkommer.php>
+AuthType Basic
+AuthName "Password Protected Area"
+AuthUserFile C:\xampp\htdocs\Bryllup\password\whoiscoming\.htpasswd
+Require valid-user
+</Files>

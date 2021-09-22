@@ -90,7 +90,7 @@
     function checkForNewImages() {
         var numberOfPictures = document.querySelectorAll(".item").length;
         $.ajax({
-            type: "post",
+            type: "get",
             url: "fetch",
             data: "numberOfPictures=" + numberOfPictures,
             dataType: "json",
@@ -179,7 +179,7 @@
     var slide;
 
     function runSlideshow() {
-        console.log("Hei");
+        // console.log("Hei");
         var slideshowImg = document.querySelectorAll(".slideshowimg");
         var img = document.querySelector(".activeImg");
         var idNum = parseInt(img.id.substr(12));
